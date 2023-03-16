@@ -1,0 +1,31 @@
+.headImg  {
+    height: 300px;
+    width: 100%;
+    opacity: 60%;
+    
+}
+
+.headerImg-quote{
+    position: relative;
+    text-align: center;
+}
+
+.quote{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.boardsDiv{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.board-card{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+    width: 30%;
+    margin: 10px;
+}
