@@ -10,13 +10,21 @@
     "@types/node": "^16.18.16",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "mongodb": "^5.1.0",
+    "next": "12.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.43.4",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "7",
+    "eslint-config-next": "12.0.4"
+  },
   "scripts": {
+    "dev": "next dev",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
