@@ -1,0 +1,49 @@
+.Services-Cards{
+  
+   margin: auto;
+   
+   flex-direction: row;
+   display: flex;
+   flex-direction: column;
+   width:100%;
+  
+}
+.View-Board-Button{
+   
+    margin: auto;
+    height: 100%;
+    width: 40%;
+    font-size: 10px
+    
+
+}
+
+.Board-Card{
+  
+    display: flex;
+    flex-direction: column;
+}
+.board-image{
+   border: black solid;
+   width: 2rem;
+   height: 2rem;
+   float: left;
+   
+    
+}
+.board-info{
+    float: right;
+    display: flex;
+    justify-content: end;
+    width: 80%;
+    height: 2rem;
+    justify-content: space-between;
+}
+.Create-Board-Button{
+   display: flex;
+   justify-content: flex-end;
+}
+.card-body{
+    padding:10;
+    margin: 5%;
+}
