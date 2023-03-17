@@ -1,0 +1,59 @@
+/* .Board-Image{
+    border: 10px solid black;
+    width: 10em;
+    height: 12em;
+    float: left;
+    
+}
+
+.Board-Div{
+    border: 10px solid black;
+    margin: 1em;
+}
+.Board-Person-Info{
+    border: 1px solid black;
+   
+    flex-direction: column;
+    display: flex;
+    
+    align-items: flex-start;
+    justify-content: space-between;
+   
+
+    
+}
+.Board-Add-Post-Button{
+    color: aqua;
+   float: right;
+   
+}
+.Name-and-Life{
+    border: 1px black solid;
+} */
+
+.Board-Image{
+    border: 5px black solid;
+    height: 20em;
+    width: 20em;
+}
+
+.Board-Div{
+    border: 10px black solid;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Board-Info{
+    border: 15px blue solid;
+    height: 20em;
+    width: 100%;
+}
+.Title-And-Button{
+    display: flex;
+    text-align: start;
+    justify-content: space-between;
+}
+.Board-Paragraph{
+    text-align: start;
+}
