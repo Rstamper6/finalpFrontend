@@ -1,15 +1,26 @@
 import "./App.css";
-import { CreateBoard } from "./components/CreateBoard";
-import ImageUploader from "./components/ImageUploader";
-import Home from "./components/ImageUploader";
-import { useState } from "react";
-import BoardList from "./components/BoardList";
+import { Header } from "./components/header";
+import { LandingPage } from "./components/landingPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BoardsRoute from "./routes/BoardsRoute";
+import { BoardPostsRoute } from "./routes/BoardPostsRoute";
+import BoardContextProvider from "./context/BoardContectProvider";
 
 function App() {
   return (
-    <div className="App">
-      <BoardList />
-    </div>
+    <BoardContextProvider>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/boards" element={<BoardsRoute />} />
+            <Route path="/boards/:id" element={<BoardPostsRoute />} />
+          </Routes>
+        </div>
+        {/* <UploadWidget /> */}
+      </BrowserRouter>
+    </BoardContextProvider>
   );
 }
 
