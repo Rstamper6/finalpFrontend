@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BoardsRoute from "./routes/BoardsRoute";
 import { BoardPostsRoute } from "./routes/BoardPostsRoute";
 import BoardContextProvider from "./context/BoardContectProvider";
+import ImageUploader from "./components/ImageUploader";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <ImageUploader />
     </BoardContextProvider>
   );
 }
