@@ -1,19 +1,22 @@
 import { Button, Label, Input } from 'reactstrap';
 import Board from '../models/GraveBook';
 import { BoardPost } from '../models/GraveBook';
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import { addBoardPost } from '../services/gravebookServices';
+import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
 import "../css/Board.css"
 
 
 
 export interface IBoardPostsProps {
-    board: Board
+    board: Board,
+    posts: BoardPost[]
 }
 
 export function BoardPosts (props: IBoardPostsProps) {
   const [post, setPost]= useState<BoardPost>()
+  const [board, setBoard]= useState()
+  const [posts, setPosts]= useState()
   const [name, setName] = useState<string>()
   const [text, setText] = useState<string>()
 
@@ -42,7 +45,7 @@ export function BoardPosts (props: IBoardPostsProps) {
   }
   function onSubmit(e: React.FormEvent<HTMLElement>){
     e.preventDefault()
-    addBoardPost(props.board._id, post)
+    addBoardPost(props.board._id)
 
     closeModal()
   }
@@ -54,6 +57,13 @@ export function BoardPosts (props: IBoardPostsProps) {
   function changeText(value:any) {
     setText(value)
   }
+
+  // function getPosts(id: string | undefined){
+  //   fetchBoardPosts(id).then(setPosts)
+    
+  //   console.log(posts);
+    
+  // }
   return (
     <div>
       <div>
@@ -77,7 +87,7 @@ export function BoardPosts (props: IBoardPostsProps) {
             <Input value={post?.text} onChange={() => changeText } type='text' />
           </div>
           <Button>select files</Button>
-          <Button type='submit' >Add Post</Button>
+          <Button  >Add Post</Button>
         </form>
       </Modal>
       
@@ -90,14 +100,17 @@ export function BoardPosts (props: IBoardPostsProps) {
                 <h5>{props.board.dob} - {props.board.dod}</h5>
             </div>
             <div>
-              <button className='Board-Button'>Add Post</button>
+              {/* <button onClick={() => getPosts(props.board._id)} className='Board-Button'>Add </button> */}
             </div>
           </div>
         <p className='Board-Paragraph'>{props.board.obituary}</p>
       </div>
+      <div>
 
-      {props.board !== undefined &&
-        props.board.boardPosts?.map((post) => 
+      </div>
+
+      {props.posts !== undefined &&
+        props.posts.map((post) =>         
         <div>
           <p>{post.from}</p>
           <p>{post.text}</p>

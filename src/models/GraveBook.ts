@@ -5,11 +5,10 @@ export default interface Board {
     dod: string,
     obituary: string,
     img?: string,
-    boardPosts?: BoardPost[]
 }
 
 export interface BoardPost {
-    _id?: string,
+    boardId: string,
     from: string,
     text: string,
     file?: string,

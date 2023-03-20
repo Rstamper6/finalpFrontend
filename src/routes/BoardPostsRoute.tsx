@@ -1,32 +1,48 @@
 import * as React from 'react';
 import Board from '../models/GraveBook';
 import { useState, useEffect, useContext } from 'react';
-import { fetchBoard } from '../services/gravebookServices';
+import { fetchBoard, fetchBoardPosts } from '../services/gravebookServices';
 import { BoardPosts } from '../components/BoardPosts';
 import { useParams } from 'react-router-dom';
 import BoardContext from '../context/BoardContext';
+import { BoardPost } from '../models/GraveBook';
 
 
 
 export function BoardPostsRoute () {
-    const [boardPost, setBoardPosts] = useState<Board>()
-    const {getBoards, boards} = useContext(BoardContext)
+    const [board, setBoard] = useState<Board>()
+    const [boardPosts, setBoardPosts] = useState([])
+    const { boards} = useContext(BoardContext)
+    const [boardId, setId] = useState('')
 
 
     let { id } = useParams();
   
     let item = boards.find((item) => item._id === id)
 
+    // useEffect(loadBoard, [])
     useEffect(loadPosts, [])
+    useEffect(idek, [])
 
+    function loadBoard(){
+      fetchBoard(item?._id).then(setBoard)
+    }
     function loadPosts(){
-        fetchBoard(item?._id).then(setBoardPosts)
+      if(item?._id !== undefined){
+        setId(item?._id)
+        console.log(boardId);
+      }
+    }
+    function idek(){
+      fetchBoardPosts(boardId).then(setBoardPosts)
+      console.log(boardPosts);
+
     }
   return (
     <div>
       {
-        boardPost !== undefined &&
-        <BoardPosts board={boardPost} />
+        board && boardPosts !== undefined &&
+        <BoardPosts board={board} posts={boardPosts} />
       }
     </div>
   );

@@ -12,8 +12,6 @@ export interface IBoardsProps {
 export function BoardsList (props: IBoardsProps) {
 
   function captureId( x: any){
-
-    console.log(x);
     <>
       <BoardPostsRoute />
     </>
@@ -35,7 +33,7 @@ export function BoardsList (props: IBoardsProps) {
                     <div className='board-info'>
                       <h3>{board.name}</h3>
                       <p>{board.dob} - {board.dod}</p>
-                      <Link onClick={() => captureId(board._id)} to={`/boards/${board._id}`}>View Board</Link>
+                      <Link to={`/boards/${board._id}`}>View Board</Link>
                       {/* <button onClick={() => captureId(board._id)} className='viewButton'>View Board</button> */}
                     </div>
                     </Card.Body>
