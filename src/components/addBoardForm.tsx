@@ -6,6 +6,7 @@ import { BoardsList } from "./BoardsList";
 import Modal from "react-modal";
 import { BoardPost } from "../models/GraveBook";
 import { useState } from "react";
+import ImageUploader from "./imageUploader";
 
 export interface IBoardFormProps {}
 
@@ -94,7 +95,10 @@ export function BoardForm(props: IBoardFormProps) {
               type="text"
             />
           </div>
-          <Button>select files</Button>
+          <Button>
+            {" "}
+            <ImageUploader />
+          </Button>
           <Button>Submit Board</Button>
         </form>
       </Modal>
