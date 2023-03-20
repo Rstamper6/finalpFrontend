@@ -29,7 +29,7 @@ export function addBoardPost(id: string | undefined, post:BoardPost | undefined)
     from: post?.from,
     text: post?.text
   }
-  return axios.put<BoardPost>(`${baseUrl}/boards/${id}`, posti)
+  return axios.patch<BoardPost>(`${baseUrl}/boards/${id}`, posti)
     .then(res =>res.data)
 }
 // export function addBoardPost(id: string | undefined, post: BoardPost):Promise<BoardPost>{

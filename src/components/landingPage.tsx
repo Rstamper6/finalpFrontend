@@ -23,7 +23,7 @@ export function LandingPage (props: ILandingPageProps) {
 
     let displayQuote = quote?.map((x) => x.quote)
 
-    let card = boards?.map((board) =>
+    let cards = boards?.map((board) =>
       <div className='board-card'>
         <img className='cardImg' src={board.img}></img>
         <h3 className='cardName'>{board.name}</h3>
@@ -43,7 +43,7 @@ export function LandingPage (props: ILandingPageProps) {
         <h2 className='quote'>{quote !== undefined && displayQuote}</h2>
       </div>
       <div className='boardsDiv'>
-        {boards !== undefined && card}
+        {boards !== undefined && cards}
       </div>
     </div>
   );
