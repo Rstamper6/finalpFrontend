@@ -1,9 +1,11 @@
 import { Button, Label, Input } from 'reactstrap';
 import Board from '../models/GraveBook';
 import { BoardPost } from '../models/GraveBook';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Modal from 'react-modal';
 import { addBoardPost } from '../services/gravebookServices';
+import "../css/Board.css"
+
 
 
 export interface IBoardPostsProps {
@@ -80,15 +82,26 @@ export function BoardPosts (props: IBoardPostsProps) {
       </Modal>
       
     </div>
-      <h1>{props.board.name}</h1>
-      <h3>{props.board.dob}</h3>
+      <div className='Board-Image'></div>
+        <div className='Board-Info'>
+          <div className='Title-And-Button'>
+            <div>
+                <h3>{props.board.name}</h3>
+                <h5>{props.board.dob} - {props.board.dod}</h5>
+            </div>
+            <div>
+              <button className='Board-Button'>Add Post</button>
+            </div>
+          </div>
+        <p className='Board-Paragraph'>{props.board.obituary}</p>
+      </div>
+
       {props.board !== undefined &&
         props.board.boardPosts?.map((post) => 
         <div>
           <p>{post.from}</p>
           <p>{post.text}</p>
         </div>
-
         )
       }
     </div>

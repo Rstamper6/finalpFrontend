@@ -1,13 +1,13 @@
 .Services-Cards{
-  
    margin: auto;
-   
-   flex-direction: row;
    display: flex;
    flex-direction: column;
-   width:100%;
-  
+   width:80%;
 }
+.BoardsList{
+    padding: 10px;
+}
+
 .View-Board-Button{
    
     margin: auto;
