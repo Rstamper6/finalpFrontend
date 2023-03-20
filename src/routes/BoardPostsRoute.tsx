@@ -1,7 +1,7 @@
 import * as React from "react";
 import Board from "../models/GraveBook";
 import { useState, useEffect, useContext } from "react";
-import { BoardPost } from "../models/GraveBook";
+
 import { fetchBoard } from "../services/gravebookServices";
 import { BoardPosts } from "../components/BoardPosts";
 import { useParams } from "react-router-dom";

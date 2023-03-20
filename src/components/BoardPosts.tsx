@@ -9,6 +9,7 @@ import "../css/Board.css";
 export interface IBoardPostsProps {
   board: Board;
 }
+
 export function BoardPosts(props: IBoardPostsProps) {
   const [post, setPost] = useState<BoardPost>();
   const [name, setName] = useState<string>();
