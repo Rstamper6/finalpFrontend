@@ -58,12 +58,6 @@ export function BoardPosts (props: IBoardPostsProps) {
     setText(value)
   }
 
-  // function getPosts(id: string | undefined){
-  //   fetchBoardPosts(id).then(setPosts)
-    
-  //   console.log(posts);
-    
-  // }
   return (
     <div>
       <div>

@@ -20,15 +20,16 @@ export function BoardPostsRoute () {
   
     let item = boards.find((item) => item._id === id)
 
-    // useEffect(loadBoard, [])
+    useEffect(loadBoard, [])
+
     useEffect(loadPosts, [])
-    useEffect(idek, [])
+    useEffect(idek, [boardId !== ''])
 
     function loadBoard(){
       fetchBoard(item?._id).then(setBoard)
     }
     function loadPosts(){
-      if(item?._id !== undefined){
+      if(item?._id){
         setId(item?._id)
         console.log(boardId);
       }
