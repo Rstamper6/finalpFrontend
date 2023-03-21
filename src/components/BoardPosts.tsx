@@ -15,11 +15,22 @@ export interface IBoardPostsProps {
 
 export function BoardPosts (props: IBoardPostsProps) {
   const [post, setPost]= useState<BoardPost>()
-  const [board, setBoard]= useState()
-  const [posts, setPosts]= useState()
-  const [name, setName] = useState<string>()
-  const [text, setText] = useState<string>()
+  const [boardId, setId] = useState('')
+  const [from, setFrom] = useState('')
+  const [text, setText] = useState('')
 
+  // useEffect(, [])
+  // function grabId(id: string){
+  //   setId(id)
+  // }
+
+  useEffect(log, [])
+
+  function log (){
+    if(props.board._id){
+      setId(props.board._id)
+    }    
+  }
 
   const customStyles = {
     content: {
@@ -43,20 +54,14 @@ export function BoardPosts (props: IBoardPostsProps) {
   function closeModal() {
     setIsOpen(false);
   }
+
   function onSubmit(e: React.FormEvent<HTMLElement>){
     e.preventDefault()
-    addBoardPost(props.board._id)
+    addBoardPost(boardId, {boardId, from, text})
 
     closeModal()
   }
 
-  function changeName(value:any){
-    setName(value)
-  }
-
-  function changeText(value:any) {
-    setText(value)
-  }
 
   return (
     <div>
@@ -74,11 +79,11 @@ export function BoardPosts (props: IBoardPostsProps) {
         <form onSubmit={onSubmit}>
           <div>
             <Label>Name</Label>
-            <Input value={post?.from} onChange={() => changeName} type='text' />
+            <Input value={from} onChange={e => setFrom(e.target.value)} type='text' />
           </div>
           <div>
             <Label>Text</Label>
-            <Input value={post?.text} onChange={() => changeText } type='text' />
+            <Input value={text} onChange={e => setText(e.target.value) } type='text' />
           </div>
           <Button>select files</Button>
           <Button  >Add Post</Button>

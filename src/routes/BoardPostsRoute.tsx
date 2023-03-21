@@ -31,12 +31,12 @@ export function BoardPostsRoute () {
     function loadPosts(){
       if(item?._id){
         setId(item?._id)
-        console.log(boardId);
+        // console.log(boardId);
       }
     }
     function idek(){
       fetchBoardPosts(boardId).then(setBoardPosts)
-      console.log(boardPosts);
+      // console.log(boardPosts);
 
     }
   return (
