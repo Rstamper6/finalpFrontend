@@ -21,21 +21,14 @@ export function addBoard(board: Board): Promise<Board> {
   return axios.post<Board>(`${baseUrl}/boards`, board).then((res) => res.data);
 }
 
-export function addBoardPost(
-  id: string | undefined,
-  post: BoardPost | undefined
-): Promise<BoardPost> {
-  const posti = {
-    from: post?.from,
-    text: post?.text,
-  };
-  return axios
-    .patch<BoardPost>(`${baseUrl}/boards/${id}`, posti)
-    .then((res) => res.data);
+
+export function fetchBoardPosts(id: string){
+  return axios.get(`${baseUrl}/boards/boardposts/${id}`).then(res => res.data)
+
 }
-// export function addBoardPost(id: string | undefined, post: BoardPost):Promise<BoardPost>{
-//   return axios.put<BoardPost>(`${baseUrl}/boards/${id}`, post).then(res =>res.data)
-// }
+export function addBoardPost(id: string, post: BoardPost):Promise<BoardPost>{
+  return axios.post<BoardPost>(`${baseUrl}/boards/boardposts/${id}`, post).then(res => res.data)
+}
 
 export function fetchQuote(): Promise<Quotes[]> {
   const config = {
