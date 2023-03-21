@@ -14,24 +14,18 @@ export interface IBoardPostsProps {
 }
 
 export function BoardPosts (props: IBoardPostsProps) {
-  const [post, setPost]= useState<BoardPost>()
   const [boardId, setId] = useState('')
   const [from, setFrom] = useState('')
   const [text, setText] = useState('')
 
-  // useEffect(, [])
-  // function grabId(id: string){
-  //   setId(id)
-  // }
-
-  useEffect(log, [])
-
-  function log (){
+  //if the board id passed through props is defined, set the id to that value
+  useEffect(() =>{
     if(props.board._id){
       setId(props.board._id)
-    }    
-  }
+    } 
+  }, [])
 
+  //prewritten modal code until line 50
   const customStyles = {
     content: {
       top: "50%",
@@ -55,6 +49,7 @@ export function BoardPosts (props: IBoardPostsProps) {
     setIsOpen(false);
   }
 
+  //prevents refesh and call the addBoardPost function from the services
   function onSubmit(e: React.FormEvent<HTMLElement>){
     e.preventDefault()
     addBoardPost(boardId, {boardId, from, text})

@@ -9,14 +9,9 @@ export interface IBoardsProps {
 }
 
 export function BoardsList (props: IBoardsProps) {
-
-  function captureId( x: any){
-    <>
-      <BoardPostsRoute />
-    </>;
-  }
   return (
     <div className='BoardsList'>
+      {/* maps all of the board passed through the BoardProps */}
       {
         props.boards.map(board => 
           <div key={board._id}>
