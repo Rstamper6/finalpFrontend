@@ -9,18 +9,21 @@ export function LandingPage(props: ILandingPageProps) {
   const [quote, setQuote] = useState<Quote[]>();
   const [boards, setBoards] = useState<Board[]>();
 
+  //calls the quote api when the page loads then sets the quote state with the returned value
   useEffect(() => {
     let fetched = fetchQuote();
 
     fetched.then((y) => setQuote(y));
   }, []);
 
+  //gets all of the boards
   useEffect(() => {
     fetchBoards().then((x) => setBoards(x));
   }, []);
 
   let displayQuote = quote?.map((x) => x.quote);
 
+  //maps all of the boards to display the data
   let cards = boards?.map((board) => (
     <div className="board-card">
       <img className="cardImg" src={board.img}></img>
@@ -37,9 +40,10 @@ export function LandingPage(props: ILandingPageProps) {
     <div className="landingPage">
       <div className="headerImg-quote">
         <img className="headImg" src="bgimg2.jpg"></img>
-
+        {/* displays the quote as long as it is defined */}
         <h2 className="quote">{quote !== undefined && displayQuote}</h2>
       </div>
+      {/* displays the boards as long as they are defined */}
       <div className="boardsDiv">{boards !== undefined && cards}</div>
     </div>
   );
