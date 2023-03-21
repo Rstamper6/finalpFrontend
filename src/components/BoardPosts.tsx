@@ -34,22 +34,22 @@ export function BoardPosts (props: IBoardPostsProps) {
 
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
     },
   };
-  let subtitle:any;
+  let subtitle: any;
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#00';
+    subtitle.style.color = "#00";
   }
   function closeModal() {
     setIsOpen(false);
@@ -59,7 +59,7 @@ export function BoardPosts (props: IBoardPostsProps) {
     e.preventDefault()
     addBoardPost(boardId, {boardId, from, text})
 
-    closeModal()
+    closeModal();
   }
 
 

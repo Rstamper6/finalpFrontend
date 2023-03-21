@@ -1,49 +1,43 @@
-.Services-Cards{
-   margin: auto;
-   display: flex;
-   flex-direction: column;
-   width:80%;
+.Services-Cards {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
-.BoardsList{
-    padding: 10px;
-}
-
-.View-Board-Button{
-   
-    margin: auto;
-    height: 100%;
-    width: 40%;
-    font-size: 10px
-    
-
+.BoardsList {
+  padding: 10px;
 }
 
-.Board-Card{
-  
-    display: flex;
-    flex-direction: column;
+.View-Board-Button {
+  margin: auto;
+  height: 100%;
+  width: 40%;
+  font-size: 10px;
 }
-.board-image{
-   border: black solid;
-   width: 2rem;
-   height: 2rem;
-   float: left;
-   
-    
+
+.Board-Card {
+  display: flex;
+  flex-direction: column;
 }
-.board-info{
-    float: right;
-    display: flex;
-    justify-content: end;
-    width: 80%;
-    height: 2rem;
-    justify-content: space-between;
+.board-image {
+  border: black solid;
+  width: 2rem;
+  height: 2rem;
+  float: left;
 }
-.Create-Board-Button{
-   display: flex;
-   justify-content: flex-end;
+.board-info {
+  float: right;
+  display: flex;
+  justify-content: end;
+  width: 80%;
+  height: 2rem;
+  justify-content: space-between;
 }
-.card-body{
-    padding:10;
-    margin: 5%;
+.Create-Board-Button {
+  display: flex;
+  justify-content: flex-end;
+}
+.card-body {
+  padding: 10;
+  margin: 5%;
 }

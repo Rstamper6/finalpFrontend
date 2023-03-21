@@ -7,6 +7,10 @@ import { useParams } from 'react-router-dom';
 import BoardContext from '../context/BoardContext';
 import { BoardPost } from '../models/GraveBook';
 
+import { fetchBoard } from "../services/gravebookServices";
+import { BoardPosts } from "../components/BoardPosts";
+import { useParams } from "react-router-dom";
+import BoardContext from "../context/BoardContext";
 
 
 export function BoardPostsRoute () {

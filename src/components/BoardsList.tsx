@@ -1,12 +1,11 @@
-import Board from '../models/GraveBook';
-import { Link } from 'react-router-dom';
-import { BoardPostsRoute } from '../routes/BoardPostsRoute';
-import { Card } from 'react-bootstrap';
-import '../css/boardlist.css'
-
+import Board from "../models/GraveBook";
+import { Link } from "react-router-dom";
+import { BoardPostsRoute } from "../routes/BoardPostsRoute";
+import { Card } from "react-bootstrap";
+import "../css/boardlist.css";
 
 export interface IBoardsProps {
-    boards:Board[]
+  boards: Board[];
 }
 
 export function BoardsList (props: IBoardsProps) {
@@ -14,10 +13,7 @@ export function BoardsList (props: IBoardsProps) {
   function captureId( x: any){
     <>
       <BoardPostsRoute />
-    </>
-
-    
-    
+    </>;
   }
   return (
     <div className='BoardsList'>

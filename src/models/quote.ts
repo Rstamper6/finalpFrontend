@@ -1,5 +1,5 @@
 export default interface Quote {
-    auther:string,
-    category: string,
-    quote:string
+  auther: string;
+  category: string;
+  quote: string;
 }
