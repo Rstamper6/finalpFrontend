@@ -1,4 +1,12 @@
-
 .login-signup-buttons {
   display: flex;
+  align-items: center;
+}
+
+.signin-div{
+  display: flex;
+  align-items: center;
+}
+.welcome {
+  font-size: calc(10px + 2vmin);
 }

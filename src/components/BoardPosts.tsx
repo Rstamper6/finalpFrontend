@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
 import "../css/Board.css"
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -61,31 +62,24 @@ export function BoardPosts (props: IBoardPostsProps) {
   return (
     <div>
       <div>
-      <Button onClick={openModal}>Add post</Button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        style={customStyles}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>New Post</h2>
-        <Button onClick={closeModal}>close</Button>
-        <form onSubmit={onSubmit}>
-          <div>
-            <Label>Name</Label>
-            <Input value={from} onChange={e => setFrom(e.target.value)} type='text' />
-          </div>
-          <div>
-            <Label>Text</Label>
-            <Input value={text} onChange={e => setText(e.target.value) } type='text' />
-          </div>
-          <Button>select files</Button>
-          <Button  >Add Post</Button>
-        </form>
-      </Modal>
-      
-    </div>
+        <Button onClick={openModal}>Add post</Button>
+        <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} style={customStyles} onRequestClose={closeModal} contentLabel="Example Modal">
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>New Post</h2>
+          <Button onClick={closeModal}>close</Button>
+          <Form onSubmit={onSubmit}>
+            <div>
+              <Label>Name</Label>
+              <Input value={from} onChange={e => setFrom(e.target.value)} type='text' />
+            </div>
+            <div>
+              <Label>Text</Label>
+              <Input value={text} onChange={e => setText(e.target.value) } type='text' />
+            </div>
+            <Button>select files</Button>
+            <Button>Add Post</Button>
+          </Form>
+        </Modal>
+      </div>
       <div className='Board-Image'></div>
         <div className='Board-Info'>
           <div className='Title-And-Button'>

@@ -15,17 +15,6 @@ export function Header() {
   const { user } = useContext(AuthContext)
   return (
     <div className="header">
-      {/* <div>
-        <Link to="/boards">Boards</Link>
-        <Link to="/">Home</Link>
-        <button>Boards</button>
-      </div> */}
-      {/* <div>
-        <label>Search</label>
-        <input type="text"></input>
-        <button>search</button>
-      </div> */}
-      
       <Navbar bg="light" expand="lg">
       <Container fluid>
        
@@ -39,6 +28,9 @@ export function Header() {
             <Nav.Link href="/">Home</Nav.Link>
           
             <Nav.Link href="/boards">Boards</Nav.Link>
+
+            <p className="welcome">{user?.displayName}</p>
+
            
 
           </Nav>
@@ -51,27 +43,26 @@ export function Header() {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <Nav.Link href="#" disabled>
+          {/* <Nav.Link href="#" disabled>
               Login
             </Nav.Link>
             <Nav.Link href="#" disabled>
               Sign up
-            </Nav.Link>
+            </Nav.Link> */}
         </Navbar.Collapse>
-        {/* <div className="login-signup-buttons">
+        <div className="login-signup-buttons">
         <div>
-          {
-            user ? 
+          {user ? 
+            <div className="signin-div">
+              <div><Button onClick={signOut}>Sign Out</Button></div>
+            </div>  
+            :
             <div>
-              <p>welcome {user.displayName}</p>
-              <button onClick={signOut}>Sign Out</button>
-            </div>  :
-            <div>
-              <button onClick={signInWithGoogle}>Sign in With Google</button>
+              <Button onClick={signInWithGoogle}>Sign in With Google</Button>
             </div>
           }
         </div>
-      </div> */}
+      </div>
       </Container>
     </Navbar>
     </div>
