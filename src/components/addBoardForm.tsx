@@ -6,7 +6,7 @@ import { BoardsList } from "./BoardsList";
 import Modal from "react-modal";
 import { BoardPost } from "../models/GraveBook";
 import { useState } from "react";
-import ImageUploader from "../components/ImageUploader";
+import ImageUploader from "./imageUploader";
 
 export interface IBoardFormProps {}
 
