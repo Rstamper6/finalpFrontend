@@ -28,29 +28,162 @@
 .Name-and-Life{
     border: 1px black solid;
 } */
+.Board-Posts-Div{
+  background-image: url("../images/flowers.jpg") ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 60rem
+}
 
 .Board-Image {
   border: 5px black solid;
-  height: 20em;
-  width: 20em;
+  height: 15em;
+  width:15em;
+  margin: auto;
 }
 
 .Board-Div {
   border: 10px black solid;
   height: 100%;
-  width: 100%;
+  margin-top: 1em;
   display: flex;
   justify-content: space-between;
+  
 }
 .Board-Info {
+  padding: 2em;
   height: 20em;
+  width: 50%;
+
+  display: block;
+  border: 1px solid black;
+  background-color: aliceblue;
+  
+}
+.Board-Button{
   width: 100%;
+  height: 100%;
+  margin: auto;
 }
 .Title-And-Button {
-  display: flex;
-  text-align: start;
-  justify-content: space-between;
+  display: block;
+  width: 100%;
+  justify-content: flex-start;
+
 }
-.Board-Paragraph {
-  text-align: start;
+@media screen and (max-width: 480px) {
+  
+  .Board-Info{
+    display: block;
+    margin: auto;
+    height: auto;
+    width: 80%;
+  }
+
+
 }
+
+@media screen and (max-width: 1000em) {
+
+  .Board-Button{
+    height:25%;
+    width: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .Title-And-Button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    
+  }
+  .Board-Info{
+    display: block;
+    margin: auto;
+    height: auto;
+    width: 60%;
+    
+  }
+  
+
+
+}
+
+
+/* @media screen and (max-width: 480px) {
+  .ServicesCards {
+     color: blue;
+  }
+ 
+}
+@media screen and (min-width: 768px) {
+  
+  .Board-Info{
+    display: flex;
+    margin: auto;
+    height: auto;
+  }
+
+
+}
+@media screen and (max-width: 500px) {
+  
+  .Board-Info{
+    display: block;
+    margin: auto;
+    height: auto;
+  }
+
+
+}
+@media screen and (min-width: 768px) {
+  
+  .Board-Info{
+    display: flex;
+    margin: auto;
+    height: auto;
+  }
+
+
+} */
+/* 
+@media screen and (max-width: 768px) {
+  .Board-List-Div {
+      width: 80%;
+      margin: auto;
+  }
+  .Board-Div{
+      width: 80%;
+      margin: auto;
+
+  }
+  .Board-Info{
+      height: 100%;
+      flex-direction: row;
+  }
+  .Board-Image{
+      height: auto;
+  }
+ 
+}
+@media screen and (max-width: 1024px) {
+  .Board-List-Div {
+      width: 80%;
+      margin: auto;
+  }
+ 
+}
+
+@media screen and (max-width: 1200px) {
+  .Board-List-Div {
+      width: 80%;
+      margin: auto;
+     display: none;
+  }
+ 
+} */
