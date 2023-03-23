@@ -52,7 +52,7 @@ export function BoardPosts(props: IBoardPostsProps) {
     setText(value);
   }
   return (
-    <div>
+    <div className="Board-Posts-Div">
       <div>
         <Button onClick={openModal}>Add post</Button>
         <Modal
@@ -94,12 +94,15 @@ export function BoardPosts(props: IBoardPostsProps) {
             <h5>
               {props.board.dob} - {props.board.dod}
             </h5>
-          </div>
-          <div>
+            <p className="Board-Paragraph">{props.board.obituary}</p>
             <button className="Board-Button">Add Post</button>
           </div>
+          <div>
+            
+            
+          </div>
         </div>
-        <p className="Board-Paragraph">{props.board.obituary}</p>
+        
       </div>
 
       {props.board !== undefined &&

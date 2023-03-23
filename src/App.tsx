@@ -1,6 +1,7 @@
 // import UploadWidget from "./components/UploadWidget";
 import "./App.css";
 import "./css/Board.css";
+import "./css/boardlist.css";
 import { Header } from "./components/header";
 import { LandingPage } from "./components/landingPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
