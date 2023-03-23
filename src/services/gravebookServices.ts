@@ -10,36 +10,35 @@ let category = "hope";
 let limit = 1;
 
 export function fetchBoards(): Promise<Board[]> {
+  //gets all boards from the API
   return axios.get<Board[]>(`${baseUrl}/boards`).then((res) => res.data);
 }
 export function fetchBoard(id: string | undefined): Promise<Board> {
-  // const id = ''
+  //gets a single board based on the ID
   return axios.get<Board>(`${baseUrl}/boards/${id}`).then((res) => res.data);
 }
 
 export function addBoard(board: Board): Promise<Board> {
+  //adds a board
   return axios.post<Board>(`${baseUrl}/boards`, board).then((res) => res.data);
 }
 
-export function addBoardPost(
-  id: string | undefined,
-  post: BoardPost | undefined
-): Promise<BoardPost> {
-  const posti = {
-    from: post?.from,
-    text: post?.text,
-  };
-  return axios
-    .patch<BoardPost>(`${baseUrl}/boards/${id}`, posti)
-    .then((res) => res.data);
+
+export function fetchBoardPosts(id: string){
+  //gets the board posts associated with an ID
+  return axios.get(`${baseUrl}/boards/boardposts/${id}`).then(res => res.data)
+
 }
-// export function addBoardPost(id: string | undefined, post: BoardPost):Promise<BoardPost>{
-//   return axios.put<BoardPost>(`${baseUrl}/boards/${id}`, post).then(res =>res.data)
-// }
+export function addBoardPost(id: string, post: BoardPost):Promise<BoardPost>{
+  //adds a post 
+  return axios.post<BoardPost>(`${baseUrl}/boards/boardposts/${id}`, post).then(res => res.data)
+}
 
 export function fetchQuote(): Promise<Quotes[]> {
+  //gets a quote from the quote API to display on the home page
   const config = {
     params: { category, limit },
+    //the API key is required in the header of the api call
     headers: { "X-Api-Key": quoteKey },
   };
   return axios.get<Quotes[]>(quoteUrl, config).then((res) => res.data);
