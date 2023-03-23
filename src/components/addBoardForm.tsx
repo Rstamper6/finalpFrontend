@@ -6,7 +6,7 @@ import { BoardsList } from "./BoardsList";
 import Modal from "react-modal";
 import { BoardPost } from "../models/GraveBook";
 import { useState } from "react";
-import ImageUploader from "./imageUploader";
+import ImageUploader from "../components/ImageUploader";
 
 export interface IBoardFormProps {}
 
@@ -16,6 +16,8 @@ export function BoardForm(props: IBoardFormProps) {
   const [dob, setdob] = useState("");
   const [dod, setdod] = useState("");
   const [obituary, setObituary] = useState("");
+  const [img, setImg] = useState("");
+  const [disableSubmit, setDisableSubmit] = useState(false);
 
   const customStyles = {
     content: {
@@ -42,11 +44,12 @@ export function BoardForm(props: IBoardFormProps) {
   function onSubmit(e: React.FormEvent<HTMLElement>) {
     e.preventDefault();
 
-    addBoard({ name, dob, dod, obituary }).then(setNewBoard);
+    addBoard({ name, dob, dod, obituary, img }).then(setNewBoard);
     console.log(newBoard?._id);
 
     closeModal();
   }
+
   return (
     <div>
       <Button onClick={openModal}>Create Board</Button>
@@ -59,7 +62,7 @@ export function BoardForm(props: IBoardFormProps) {
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Create Board</h2>
         <Button onClick={closeModal}>close</Button>
-        <form onSubmit={onSubmit}>
+        <form id="create_board_form" onSubmit={onSubmit}>
           <div>
             <Label>Name</Label>
             <Input
@@ -95,12 +98,25 @@ export function BoardForm(props: IBoardFormProps) {
               type="text"
             />
           </div>
-          <Button>
-            {" "}
-            <ImageUploader />
-          </Button>
-          <Button>Submit Board</Button>
+          <div>
+            <Input id="img_input" type="hidden" value={img} />
+          </div>
+          {/* <Button> */}
+          {/* </Button> */}
         </form>
+        <ImageUploader
+          onImgChange={setImg}
+          setDisableSubmit={setDisableSubmit}
+        />
+        {disableSubmit ? (
+          <Button disabled type="submit" form="create_board_form">
+            Submit Board
+          </Button>
+        ) : (
+          <Button type="submit" form="create_board_form">
+            Submit Board
+          </Button>
+        )}
       </Modal>
     </div>
   );

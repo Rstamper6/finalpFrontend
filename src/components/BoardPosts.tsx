@@ -86,7 +86,7 @@ export function BoardPosts(props: IBoardPostsProps) {
           </form>
         </Modal>
       </div>
-      <div className="Board-Image"></div>
+      <div className="Board-Image">{props.board.img}</div>
       <div className="Board-Info">
         <div className="Title-And-Button">
           <div>

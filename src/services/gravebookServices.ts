@@ -44,3 +44,11 @@ export function fetchQuote(): Promise<Quotes[]> {
   };
   return axios.get<Quotes[]>(quoteUrl, config).then((res) => res.data);
 }
+
+export async function getBoardData(boardSearch: any) {
+  let result = axios.get<Board[]>(`${baseUrl}/boards/boards/:name`, {
+    params: { query: boardSearch },
+  });
+  console.log(result);
+  return result;
+}

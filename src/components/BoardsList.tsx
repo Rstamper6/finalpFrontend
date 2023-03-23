@@ -24,7 +24,9 @@ export function BoardsList(props: IBoardsProps) {
               <Card className="Board-Card">
                 {/* <Card.Img id='TapBox-Card-Image' variant="top" src={board.img} /> */}
                 <Card.Body>
-                  <div className="board-image">yo</div>
+                  <div className="board-image">
+                    <img src={board.img} height="100" />
+                  </div>
                   <div className="board-info">
                     <h3>{board.name}</h3>
                     <p>

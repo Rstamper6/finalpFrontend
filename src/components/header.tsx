@@ -1,7 +1,24 @@
 import "../css/header.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { getBoardData } from "../services/gravebookServices";
 
-export function Header() {
+interface IHeaderProps {
+  UpdateBoards: Function;
+}
+
+export function Header(props: IHeaderProps) {
+  const [boardlists, setBoardLists] = useState<string>("");
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const result = data.get("searchBarInput")?.toString() || "";
+    getBoardData(boardlists).then((response) =>
+      props.UpdateBoards(response.data)
+    );
+    console.log(boardlists);
+  };
+
   return (
     <div className="header">
       <div>
@@ -10,9 +27,17 @@ export function Header() {
         <button>Boards</button>
       </div>
       <div>
-        <label>Search</label>
-        <input type="text"></input>
-        <button>search</button>
+        <form onSubmit={onSubmit}>
+          <label>Search</label>
+          <input
+            type="text"
+            name="searchBarInput"
+            placeholder="Search name here"
+            id="searchBarInput"
+            onChange={(e) => setBoardLists(e.target.value)}
+          ></input>
+          <button type="submit">search</button>
+        </form>
       </div>
       <div className="login-signup-buttons">
         <div>
