@@ -14,6 +14,8 @@ const BoardContextProvider = ({ children }: IBoardContextProviderProps) => {
 
   const getBoards = () => {
     fetchBoards().then(setBoards);
+    console.log('loser');
+    
   };
   const getSingleBoard = (id: string) => {
     fetchBoard(id).then(setBoard);

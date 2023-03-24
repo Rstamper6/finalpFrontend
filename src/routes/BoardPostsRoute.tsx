@@ -20,24 +20,19 @@ export function BoardPostsRoute () {
     let { id } = useParams();
     //searches the boards context for the id that matches the id parameter
     let item = boards.find((item) => item._id === id)
-    let idchecker = boardId !== ''
+
 
     //fetches the board based on the ID and sets it to the board state
     //also sets the id as long as item._id is not undefined 
-    useEffect(() =>{
-      fetchBoard(item?._id).then(setBoard)
-        if(item?._id){
-          setId(item?._id)
-          // console.log(boardId);
-        }
+      useEffect(() => {
+        fetchBoard(id).then(setBoard)
+        fetchBoardPosts(id).then(setBoardPosts)
+        console.log(id);
+        
       }, [])
 
-    //fetches the board posts once the boardId state changes
     useEffect(() =>{
-      fetchBoardPosts(boardId).then(setBoardPosts)
-    }, [idchecker])
-    useEffect(() =>{
-      fetchBoardPosts(boardId).then(setBoardPosts)
+      fetchBoardPosts(id).then(setBoardPosts)
     }, [boardPosts])
  
   return (

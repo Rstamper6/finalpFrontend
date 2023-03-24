@@ -24,7 +24,7 @@ export function addBoard(board: Board): Promise<Board> {
 }
 
 
-export function fetchBoardPosts(id: string){
+export function fetchBoardPosts(id: string | undefined){
   //gets the board posts associated with an ID
   return axios.get(`${baseUrl}/boards/boardposts/${id}`).then(res => res.data)
 
