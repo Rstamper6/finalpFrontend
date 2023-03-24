@@ -1,14 +1,17 @@
-import * as React from "react";
 import { Button, Label, Input } from "reactstrap";
-import Board from "../models/GraveBook";
+import Board from '../models/GraveBook';
 import { addBoard } from "../services/gravebookServices";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useContext } from 'react';
 import ImageUploader from "./imageUploader";
+import AuthContext from '../context/AuthContext';
 
 export interface IBoardFormProps {}
 
 export function BoardForm(props: IBoardFormProps) {
+  const { user } = useContext(AuthContext)
+  const userId = user?.email
+
   const [newBoard, setNewBoard] = useState<Board>();
   const [name, setName] = useState("");
   const [dob, setdob] = useState("");
@@ -27,7 +30,7 @@ export function BoardForm(props: IBoardFormProps) {
     },
   };
   let subtitle: any;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
@@ -49,62 +52,66 @@ export function BoardForm(props: IBoardFormProps) {
   }
   return (
     <div>
-      {/* more prewritten modal stuff to line 62 */}
-      <Button onClick={openModal}>Create Board</Button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        style={customStyles}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Create Board</h2>
-        <Button onClick={closeModal}>close</Button>
-        <form onSubmit={onSubmit}>
-          <div>
-            <Label>Name</Label>
-            <Input
-              placeholder="John Smith"
-              //sets the value of the input box to the "name" state
-              value={name}
-              //whenever something gets typed in, the calls the setName state function
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-            />
-          </div>
-          <div>
-            <Label>Date of Birth</Label>
-            <Input
-              placeholder="00-00-0000"
-              value={dob}
-              onChange={(e) => setdob(e.target.value)}
-              type="text"
-            />
-          </div>
-          <div>
-            <Label>Date of Death</Label>
-            <Input
-              placeholder="00-00-0000"
-              value={dod}
-              onChange={(e) => setdod(e.target.value)}
-              type="text"
-            />
-          </div>
-          <div>
-            <Label>Obituary</Label>
-            <Input
-              value={obituary}
-              onChange={(e) => setObituary(e.target.value)}
-              type="text"
-            />
-          </div>
-          <Button>
-            {" "}
-            <ImageUploader />
-          </Button>
-          <Button>Submit Board</Button>
-        </form>
-      </Modal>
+      {
+        user ?
+        <div>
+        {/* more prewritten modal stuff to line 62 */}
+        <Button onClick={openModal}>Create Board</Button>
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          style={customStyles}
+          onRequestClose={closeModal}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Create Board</h2>
+          <Button onClick={closeModal}>close</Button>
+          <form onSubmit={onSubmit}>
+            <div>
+              <Label>Name</Label>
+              <Input
+                placeholder="John Smith"
+                //sets the value of the input box to the "name" state
+                value={name}
+                //whenever something gets typed in, the calls the setName state function
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+              />
+            </div>
+            <div>
+              <Label>Date of Birth</Label>
+              <Input
+                placeholder="00-00-0000"
+                value={dob}
+                onChange={(e) => setdob(e.target.value)}
+                type="text"
+              />
+            </div>
+            <div>
+              <Label>Date of Death</Label>
+              <Input
+                placeholder="00-00-0000"
+                value={dod}
+                onChange={(e) => setdod(e.target.value)}
+                type="text"
+              />
+            </div>
+            <div>
+              <Label>Obituary</Label>
+              <Input
+                value={obituary}
+                onChange={(e) => setObituary(e.target.value)}
+                type="text"
+              />
+            </div>
+              {" "}
+              <ImageUploader />
+            <Button>Submit Board</Button>
+          </form>
+        </Modal>
+      </div> :
+      <p>Sign In to Add a Board</p>
+      }
     </div>
   );
 }

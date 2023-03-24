@@ -1,0 +1,22 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.from-text-div {
+    display: flex;
+    border: 1px solid grey;
+    padding: 20px;
+
+}
+.from {
+    margin-left: 0;
+    min-width: 10%;
+}
+.post-file {
+    width: 40%;
+    margin-right: 20px;
+}
+.text {
+    text-align: left;
+}
