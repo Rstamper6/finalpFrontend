@@ -29,7 +29,7 @@ export function Header() {
           
             <Nav.Link href="/boards">Boards</Nav.Link>
 
-            <p className="welcome">{user?.displayName}</p>
+            <Nav.Link style={{color: 'black'}} className="welcome">{user?.displayName}</Nav.Link>
 
            
 
@@ -54,11 +54,11 @@ export function Header() {
         <div>
           {user ? 
             <div className="signin-div">
-              <div><Button onClick={signOut}>Sign Out</Button></div>
+              <div><Button style={{marginLeft: '10px'}} onClick={signOut}>Sign Out</Button></div>
             </div>  
             :
             <div>
-              <Button onClick={signInWithGoogle}>Sign in With Google</Button>
+              <Button style={{marginLeft: '10px'}} onClick={signInWithGoogle}>Sign in With Google</Button>
             </div>
           }
         </div>

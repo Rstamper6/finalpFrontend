@@ -37,7 +37,7 @@ export function addBoardPost(id: string, post: BoardPost):Promise<BoardPost>{
 export function fetchQuote(): Promise<Quotes[]> {
   //gets a quote from the quote API to display on the home page
   const config = {
-    params: { category, limit },
+    params: { category },
     //the API key is required in the header of the api call
     headers: { "X-Api-Key": quoteKey },
   };

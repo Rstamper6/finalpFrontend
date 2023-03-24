@@ -103,10 +103,8 @@ export function BoardForm(props: IBoardFormProps) {
                 type="text"
               />
             </div>
-            <Button>
               {" "}
               <ImageUploader />
-            </Button>
             <Button>Submit Board</Button>
           </form>
         </Modal>

@@ -25,7 +25,7 @@ export function BoardPostsRoute () {
       fetchBoard(item?._id).then(setBoard)
         if(item?._id){
           setId(item?._id)
-          // console.log(boardId);
+          console.log(` id: ${boardId}`);
         }
       }, [])
 
@@ -33,6 +33,10 @@ export function BoardPostsRoute () {
     useEffect(() =>{
       fetchBoardPosts(boardId).then(setBoardPosts)
     }, [idchecker])
+    //when a new post/comment is added(boardPosts state is changed), it calls fetchBoardPosts 
+    useEffect(() =>{
+      fetchBoardPosts(boardId).then(setBoardPosts)
+    }, [boardPosts])
  
   return (
     <div>
