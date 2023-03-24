@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
 import "../css/Board.css"
+import Form from 'react-bootstrap/Form';
 
 
 
