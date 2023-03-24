@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 export default interface Board {
     _id?: string,
     name: string,
@@ -8,6 +9,7 @@ export default interface Board {
 }
 
 export interface BoardPost {
+    _id?: string,
     boardId: string,
     from: string,
     text: string,

@@ -10,6 +10,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { signInWithGoogle, signOut } from '../firebaseconfig';
 import AuthContext from '../context/AuthContext';
 import { useContext } from 'react';
+import { SignIn } from "./SignIn";
 
 export function Header() {
   const { user } = useContext(AuthContext)
@@ -52,15 +53,7 @@ export function Header() {
         </Navbar.Collapse>
         <div className="login-signup-buttons">
         <div>
-          {user ? 
-            <div className="signin-div">
-              <div><Button style={{marginLeft: '10px'}} onClick={signOut}>Sign Out</Button></div>
-            </div>  
-            :
-            <div>
-              <Button style={{marginLeft: '10px'}} onClick={signInWithGoogle}>Sign in With Google</Button>
-            </div>
-          }
+            <SignIn />
         </div>
       </div>
       </Container>

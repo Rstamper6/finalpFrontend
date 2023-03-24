@@ -8,9 +8,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BoardsRoute from "./routes/BoardsRoute";
 import { BoardPostsRoute } from "./routes/BoardPostsRoute";
 import BoardContextProvider from "./context/BoardContectProvider";
+import AuthContextProvider from './context/AuthContextProvider';
 
 function App() {
   return (
+    <AuthContextProvider>
     <BoardContextProvider>
       <BrowserRouter>
         <div className="App">
@@ -24,6 +26,8 @@ function App() {
         {/* <UploadWidget /> */}
       </BrowserRouter>
     </BoardContextProvider>
+    </AuthContextProvider>
+
   );
 }
 

@@ -2,18 +2,23 @@ import * as React from 'react';
 import { Button, Input, Label } from 'reactstrap';
 import Modal from 'react-modal';
 import { text } from 'stream/consumers';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { addBoardPost } from '../services/gravebookServices';
 import { useParams } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 
 export interface IPostFormProps {
     boardId: string | undefined
 }
 
 export function PostForm (props: IPostFormProps) {
+  const { user } = useContext(AuthContext)
+  // const userId = user?.uid
+
     const [from, setFrom] = useState('')
     const [text, setText] = useState('')
     const [boardId, setBoardId] = useState('')
+    const [userId, setUserId] = useState()
     let { id } = useParams();
 
     const customStyles = {
@@ -45,12 +50,12 @@ export function PostForm (props: IPostFormProps) {
         closeModal()
         setFrom('')
         setText('')
-    
       }
   return (
     <div>
       <Button onClick={openModal}>Add post</Button>
       <Modal
+        ariaHideApp={false}        
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         style={customStyles}

@@ -10,7 +10,7 @@ export function Posts (props: IPostsProps) {
     <div className='posts'>
         {
             props.posts.map((post) => 
-                <div className='from-text-div'>
+                <div key={post._id} className='from-text-div'>
                     <h5 className='from'>{post.from}</h5>
                     {   post.file ?
                         <img className='post-file' src={post.file}></img>

@@ -10,6 +10,7 @@ export interface IBoardFormProps {}
 
 export function BoardForm(props: IBoardFormProps) {
   const { user } = useContext(AuthContext)
+  const userId = user?.email
 
   const [newBoard, setNewBoard] = useState<Board>();
   const [name, setName] = useState("");

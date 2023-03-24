@@ -8,9 +8,12 @@ import BoardContext from '../context/BoardContext';
 import { PostForm } from '../components/AddPostForm';
 import { Posts } from '../components/Posts';
 import '../css/boardPostsRoute.css'
+import AuthContext from '../context/AuthContext';
 
 
 export function BoardPostsRoute () {
+  const { user } = useContext(AuthContext)
+
     const [board, setBoard] = useState<Board>()
     const [boardPosts, setBoardPosts] = useState([])
     const { boards} = useContext(BoardContext)
@@ -27,8 +30,10 @@ export function BoardPostsRoute () {
       useEffect(() => {
         fetchBoard(id).then(setBoard)
         fetchBoardPosts(id).then(setBoardPosts)
-        console.log(id);
-        
+        if(user?.uid){
+          console.log(user.uid);
+          
+        }
       }, [])
 
     useEffect(() =>{
@@ -44,8 +49,11 @@ export function BoardPostsRoute () {
             <div className='name-img-div'>
               <BoardPosts board={board} posts={boardPosts} />
             </div>
-            <PostForm boardId={id}/>
-
+            {user ?
+              <PostForm boardId={id}/>
+              :
+              <h5>Sign in to Add a post</h5>
+            }
             <div className='posts-div'>
               <Posts  posts={boardPosts}/>
             </div>
