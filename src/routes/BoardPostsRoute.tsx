@@ -5,6 +5,9 @@ import { fetchBoard, fetchBoardPosts } from '../services/gravebookServices';
 import { BoardPosts } from '../components/BoardPosts';
 import { useParams } from 'react-router-dom';
 import BoardContext from '../context/BoardContext';
+import { PostForm } from '../components/AddPostForm';
+import { Posts } from '../components/Posts';
+import '../css/boardPostsRoute.css'
 
 
 export function BoardPostsRoute () {
@@ -33,13 +36,26 @@ export function BoardPostsRoute () {
     useEffect(() =>{
       fetchBoardPosts(boardId).then(setBoardPosts)
     }, [idchecker])
+    useEffect(() =>{
+      fetchBoardPosts(boardId).then(setBoardPosts)
+    }, [boardPosts])
  
   return (
-    <div>
+    <div className='boardPostsRoute'>
       {
         //displays the board and posts as long as they are not undefined
         board && boardPosts !== undefined &&
-        <BoardPosts board={board} posts={boardPosts} />
+        <div className='route'>
+            <div className='name-img-div'>
+              <BoardPosts board={board} posts={boardPosts} />
+            </div>
+            <PostForm boardId={id}/>
+
+            <div className='posts-div'>
+              <Posts  posts={boardPosts}/>
+            </div>
+        </div>
+
       }
     </div>
   );

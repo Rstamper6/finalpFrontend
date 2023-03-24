@@ -29,7 +29,7 @@ export function fetchBoardPosts(id: string){
   return axios.get(`${baseUrl}/boards/boardposts/${id}`).then(res => res.data)
 
 }
-export function addBoardPost(id: string, post: BoardPost):Promise<BoardPost>{
+export function addBoardPost(id: string | undefined, post: BoardPost):Promise<BoardPost>{
   //adds a post 
   return axios.post<BoardPost>(`${baseUrl}/boards/boardposts/${id}`, post).then(res => res.data)
 }

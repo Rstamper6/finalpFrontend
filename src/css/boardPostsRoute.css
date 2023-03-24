@@ -1,0 +1,15 @@
+.boardPostsRoute {
+    padding: 20px;
+}
+.posts-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.name-img-div{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
