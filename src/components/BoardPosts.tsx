@@ -1,20 +1,29 @@
 import { Button, Label, Input } from "reactstrap";
 import Board from "../models/GraveBook";
 import { BoardPost } from "../models/GraveBook";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { addBoardPost } from "../services/gravebookServices";
+import { addBoardPost, fetchBoardPosts } from "../services/gravebookServices";
 import "../css/Board.css";
 
 export interface IBoardPostsProps {
   board: Board;
+  posts: BoardPost[];
 }
 
 export function BoardPosts(props: IBoardPostsProps) {
-  const [post, setPost] = useState<BoardPost>();
-  const [name, setName] = useState<string>();
-  const [text, setText] = useState<string>();
+  const [boardId, setId] = useState("");
+  const [from, setFrom] = useState("");
+  const [text, setText] = useState("");
 
+  //if the board id passed through props is defined, set the id to that value
+  useEffect(() => {
+    if (props.board._id) {
+      setId(props.board._id);
+    }
+  }, []);
+
+  //prewritten modal code until line 50
   const customStyles = {
     content: {
       top: "50%",
@@ -37,20 +46,15 @@ export function BoardPosts(props: IBoardPostsProps) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  //prevents refesh and call the addBoardPost function from the services
   function onSubmit(e: React.FormEvent<HTMLElement>) {
     e.preventDefault();
-    addBoardPost(props.board._id, post);
+    addBoardPost(boardId, { boardId, from, text });
 
     closeModal();
   }
 
-  function changeName(value: any) {
-    setName(value);
-  }
-
-  function changeText(value: any) {
-    setText(value);
-  }
   return (
     <div>
       <div>
@@ -68,25 +72,25 @@ export function BoardPosts(props: IBoardPostsProps) {
             <div>
               <Label>Name</Label>
               <Input
-                value={post?.from}
-                onChange={() => changeName}
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
                 type="text"
               />
             </div>
             <div>
               <Label>Text</Label>
               <Input
-                value={post?.text}
-                onChange={() => changeText}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 type="text"
               />
             </div>
             <Button>select files</Button>
-            <Button type="submit">Add Post</Button>
+            <Button>Add Post</Button>
           </form>
         </Modal>
       </div>
-      <div className="Board-Image">{props.board.img}</div>
+      <div className="Board-Image"></div>
       <div className="Board-Info">
         <div className="Title-And-Button">
           <div>
@@ -96,14 +100,15 @@ export function BoardPosts(props: IBoardPostsProps) {
             </h5>
           </div>
           <div>
-            <button className="Board-Button">Add Post</button>
+            {/* <button onClick={() => getPosts(props.board._id)} className='Board-Button'>Add </button> */}
           </div>
         </div>
         <p className="Board-Paragraph">{props.board.obituary}</p>
       </div>
+      <div></div>
 
-      {props.board !== undefined &&
-        props.board.boardPosts?.map((post) => (
+      {props.posts !== undefined &&
+        props.posts.map((post) => (
           <div>
             <p>{post.from}</p>
             <p>{post.text}</p>

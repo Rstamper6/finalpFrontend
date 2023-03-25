@@ -1,10 +1,8 @@
 import * as React from "react";
 import { Button, Label, Input } from "reactstrap";
 import Board from "../models/GraveBook";
-import { fetchBoards, addBoard } from "../services/gravebookServices";
-import { BoardsList } from "./BoardsList";
+import { addBoard } from "../services/gravebookServices";
 import Modal from "react-modal";
-import { BoardPost } from "../models/GraveBook";
 import { useState } from "react";
 import ImageUploader from "./imageUploader";
 
@@ -19,6 +17,7 @@ export function BoardForm(props: IBoardFormProps) {
   const [img, setImg] = useState("");
   const [disableSubmit, setDisableSubmit] = useState(false);
 
+  //from here to line 40 is all pre written code from react-modal
   const customStyles = {
     content: {
       top: "50%",
@@ -41,17 +40,20 @@ export function BoardForm(props: IBoardFormProps) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  //when the form gets submitted the page wont refresh
+  //calls the "addBoard" function from the service and passes in the information in the brackets
   function onSubmit(e: React.FormEvent<HTMLElement>) {
     e.preventDefault();
 
     addBoard({ name, dob, dod, obituary, img }).then(setNewBoard);
     console.log(newBoard?._id);
-
     closeModal();
   }
 
   return (
     <div>
+      {/* more prewritten modal stuff to line 62 */}
       <Button onClick={openModal}>Create Board</Button>
       <Modal
         isOpen={modalIsOpen}
@@ -67,7 +69,9 @@ export function BoardForm(props: IBoardFormProps) {
             <Label>Name</Label>
             <Input
               placeholder="John Smith"
+              //sets the value of the input box to the "name" state
               value={name}
+              //whenever something gets typed in, the calls the setName state function
               onChange={(e) => setName(e.target.value)}
               type="text"
             />

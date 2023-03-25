@@ -9,14 +9,9 @@ export interface IBoardsProps {
 }
 
 export function BoardsList(props: IBoardsProps) {
-  function captureId(x: any) {
-    console.log(x);
-    <>
-      <BoardPostsRoute />
-    </>;
-  }
   return (
     <div className="BoardsList">
+      {/* maps all of the board passed through the BoardProps */}
       {props.boards.map((board) => (
         <div key={board._id}>
           <div>
@@ -32,12 +27,7 @@ export function BoardsList(props: IBoardsProps) {
                     <p>
                       {board.dob} - {board.dod}
                     </p>
-                    <Link
-                      onClick={() => captureId(board._id)}
-                      to={`/boards/${board._id}`}
-                    >
-                      View Board
-                    </Link>
+                    <Link to={`/boards/${board._id}`}>View Board</Link>
                     {/* <button onClick={() => captureId(board._id)} className='viewButton'>View Board</button> */}
                   </div>
                 </Card.Body>
