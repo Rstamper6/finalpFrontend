@@ -5,9 +5,15 @@ import { fetchBoard, fetchBoardPosts } from '../services/gravebookServices';
 import { BoardPosts } from '../components/BoardPosts';
 import { useParams } from 'react-router-dom';
 import BoardContext from '../context/BoardContext';
+import { PostForm } from '../components/AddPostForm';
+import { Posts } from '../components/Posts';
+import '../css/boardPostsRoute.css'
+import AuthContext from '../context/AuthContext';
 
 
 export function BoardPostsRoute () {
+  const { user } = useContext(AuthContext)
+
     const [board, setBoard] = useState<Board>()
     const [boardPosts, setBoardPosts] = useState([])
     const { boards} = useContext(BoardContext)
@@ -17,29 +23,42 @@ export function BoardPostsRoute () {
     let { id } = useParams();
     //searches the boards context for the id that matches the id parameter
     let item = boards.find((item) => item._id === id)
-    let idchecker = boardId !== ''
+
 
     //fetches the board based on the ID and sets it to the board state
     //also sets the id as long as item._id is not undefined 
-    useEffect(() =>{
-      fetchBoard(item?._id).then(setBoard)
-        if(item?._id){
-          setId(item?._id)
-          // console.log(boardId);
+      useEffect(() => {
+        fetchBoard(id).then(setBoard)
+        fetchBoardPosts(id).then(setBoardPosts)
+        if(user?.uid){
+          console.log(user.uid);
+          
         }
       }, [])
 
-    //fetches the board posts once the boardId state changes
     useEffect(() =>{
-      fetchBoardPosts(boardId).then(setBoardPosts)
-    }, [idchecker])
+      fetchBoardPosts(id).then(setBoardPosts)
+    }, [boardPosts])
  
   return (
-    <div>
+    <div className='boardPostsRoute'>
       {
         //displays the board and posts as long as they are not undefined
         board && boardPosts !== undefined &&
-        <BoardPosts board={board} posts={boardPosts} />
+        <div className='route'>
+            <div className='name-img-div'>
+              <BoardPosts board={board} posts={boardPosts} />
+            </div>
+            {user ?
+              <PostForm boardId={id}/>
+              :
+              <h5>Sign in to Add a post</h5>
+            }
+            <div className='posts-div'>
+              <Posts  posts={boardPosts}/>
+            </div>
+        </div>
+
       }
     </div>
   );

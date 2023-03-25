@@ -13,7 +13,12 @@ interface IHeaderProps {
   UpdateBoards: Function;
 }
 
+import { signInWithGoogle, signOut } from "../firebaseconfig";
+import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
+import { SignIn } from "./SignIn";
 export function Header(props: IHeaderProps) {
+  const { user } = useContext(AuthContext);
   const [boardlists, setBoardLists] = useState<string>("");
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -27,32 +32,6 @@ export function Header(props: IHeaderProps) {
 
   return (
     <div className="header">
-      {/* <div>
-        <Link to="/boards">Boards</Link>
-        <Link to="/">Home</Link>
-        <button>Boards</button>
-      </div>
-      <div>
-        <form onSubmit={onSubmit}>
-          <label>Search</label>
-          <input
-            type="text"
-            name="searchBarInput"
-            placeholder="Search name here"
-            id="searchBarInput"
-            onChange={(e) => setBoardLists(e.target.value)}
-          ></input>
-          <button type="submit">search</button>
-        </form>
-      </div>
-      <div className="login-signup-buttons">
-      </div> */}
-      {/* <div>
-        <label>Search</label>
-        <input type="text"></input>
-        <button>search</button>
-      </div> */}
-
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -65,31 +44,35 @@ export function Header(props: IHeaderProps) {
               <Nav.Link href="/">Home</Nav.Link>
 
               <Nav.Link href="/boards">Boards</Nav.Link>
+
+              <Nav.Link style={{ color: "black" }} className="welcome">
+                {user?.displayName}
+              </Nav.Link>
             </Nav>
-            <Form className="d-flex">
+            <Form className="d-flex" onSubmit={onSubmit}>
               <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
+                type="text"
+                name="searchBarInput"
+                placeholder="Search movie here"
+                id="searchBarInput"
+                onChange={(e) => setBoardLists(e.target.value)}
               />
-              <Button variant="outline-success">Search</Button>
+              <Button type="submit" variant="outline-success">
+                Search
+              </Button>
             </Form>
-            <Nav.Link href="#" disabled>
+            {/* <Nav.Link href="#" disabled>
               Login
             </Nav.Link>
             <Nav.Link href="#" disabled>
               Sign up
-            </Nav.Link>
+            </Nav.Link> */}
           </Navbar.Collapse>
-          {/* <div className="login-signup-buttons">
-        <div>
-          <button>Login</button>
-        </div>
-        <div>
-          <button>Sign up</button>
-        </div>
-      </div> */}
+          <div className="login-signup-buttons">
+            <div>
+              <SignIn />
+            </div>
+          </div>
         </Container>
       </Navbar>
     </div>
