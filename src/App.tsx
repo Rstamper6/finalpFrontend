@@ -21,9 +21,9 @@ function App() {
   };
 
   //callback function
-  function UpdateBoards(boardlist: Board[]) {
-    console.log(boardlist);
-    setBoardLists([...boardlist]);
+  function UpdateBoards(apiResponseBoardList: Board[]) {
+    console.log(apiResponseBoardList);
+    setBoardLists([...apiResponseBoardList]);
   }
   return (
     <AuthContextProvider>
@@ -32,7 +32,10 @@ function App() {
           <div className="App" onSubmit={(e) => onSubmit(e)}>
             <Header UpdateBoards={UpdateBoards} />
             <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route
+                path="/"
+                element={<LandingPage boardLists={boardLists} />}
+              />
               <Route path="/boards" element={<BoardsRoute />} />
               <Route path="/boards/:id" element={<BoardPostsRoute />} />
             </Routes>

@@ -8,26 +8,26 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { signInWithGoogle, signOut } from "../firebaseconfig";
+import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
+import { SignIn } from "./SignIn";
 
 interface IHeaderProps {
   UpdateBoards: Function;
 }
 
-import { signInWithGoogle, signOut } from "../firebaseconfig";
-import AuthContext from "../context/AuthContext";
-import { useContext } from "react";
-import { SignIn } from "./SignIn";
 export function Header(props: IHeaderProps) {
   const { user } = useContext(AuthContext);
-  const [boardlists, setBoardLists] = useState<string>("");
+  const [namesearch, setNamesearch] = useState<string>("");
   const onSubmit = (e: any) => {
     e.preventDefault();
     const data = new FormData(e.target);
     const result = data.get("searchBarInput")?.toString() || "";
-    getBoardData(boardlists).then((response) =>
+    getBoardData(namesearch).then((response) =>
       props.UpdateBoards(response.data)
     );
-    console.log(boardlists);
+    console.log(namesearch);
   };
 
   return (
@@ -53,9 +53,9 @@ export function Header(props: IHeaderProps) {
               <Form.Control
                 type="text"
                 name="searchBarInput"
-                placeholder="Search movie here"
+                placeholder="Search name here"
                 id="searchBarInput"
-                onChange={(e) => setBoardLists(e.target.value)}
+                onChange={(e) => setNamesearch(e.target.value)}
               />
               <Button type="submit" variant="outline-success">
                 Search
