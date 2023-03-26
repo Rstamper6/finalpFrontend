@@ -8,26 +8,42 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BoardsRoute from "./routes/BoardsRoute";
 import { BoardPostsRoute } from "./routes/BoardPostsRoute";
 import BoardContextProvider from "./context/BoardContectProvider";
-import AuthContextProvider from './context/AuthContextProvider';
+import AuthContextProvider from "./context/AuthContextProvider";
+import { FormEvent, useState } from "react";
+import Board from "./models/GraveBook";
 
 function App() {
+  const [boardLists, setBoardLists] = useState<Board[]>([]);
+
+  const onSubmit = (e: FormEvent): void => {
+    e.preventDefault();
+    setBoardLists(boardLists);
+  };
+
+  //callback function
+  function UpdateBoards(apiResponseBoardList: Board[]) {
+    console.log(apiResponseBoardList);
+    setBoardLists([...apiResponseBoardList]);
+  }
   return (
     <AuthContextProvider>
-    <BoardContextProvider>
-      <BrowserRouter>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/boards" element={<BoardsRoute />} />
-            <Route path="/boards/:id" element={<BoardPostsRoute />} />
-          </Routes>
-        </div>
-        {/* <UploadWidget /> */}
-      </BrowserRouter>
-    </BoardContextProvider>
+      <BoardContextProvider>
+        <BrowserRouter>
+          <div className="App" onSubmit={(e) => onSubmit(e)}>
+            <Header UpdateBoards={UpdateBoards} />
+            <Routes>
+              <Route
+                path="/"
+                element={<LandingPage boardLists={boardLists} />}
+              />
+              <Route path="/boards" element={<BoardsRoute />} />
+              <Route path="/boards/:id" element={<BoardPostsRoute />} />
+            </Routes>
+          </div>
+          {/* <UploadWidget /> */}
+        </BrowserRouter>
+      </BoardContextProvider>
     </AuthContextProvider>
-
   );
 }
 

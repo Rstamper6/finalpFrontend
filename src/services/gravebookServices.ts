@@ -23,15 +23,20 @@ export function addBoard(board: Board): Promise<Board> {
   return axios.post<Board>(`${baseUrl}/boards`, board).then((res) => res.data);
 }
 
-
-export function fetchBoardPosts(id: string | undefined){
+export function fetchBoardPosts(id: string | undefined) {
   //gets the board posts associated with an ID
-  return axios.get(`${baseUrl}/boards/boardposts/${id}`).then(res => res.data)
-
+  return axios
+    .get(`${baseUrl}/boards/boardposts/${id}`)
+    .then((res) => res.data);
 }
-export function addBoardPost(id: string | undefined, post: BoardPost):Promise<BoardPost>{
-  //adds a post 
-  return axios.post<BoardPost>(`${baseUrl}/boards/boardposts/${id}`, post).then(res => res.data)
+export function addBoardPost(
+  id: string | undefined,
+  post: BoardPost
+): Promise<BoardPost> {
+  //adds a post
+  return axios
+    .post<BoardPost>(`${baseUrl}/boards/boardposts/${id}`, post)
+    .then((res) => res.data);
 }
 
 export function fetchQuote(): Promise<Quotes[]> {
@@ -42,4 +47,13 @@ export function fetchQuote(): Promise<Quotes[]> {
     headers: { "X-Api-Key": quoteKey },
   };
   return axios.get<Quotes[]>(quoteUrl, config).then((res) => res.data);
+}
+
+export async function getBoardData(boardSearch: any) {
+  let result = axios.get<Board[]>(
+    `${baseUrl}/boards/boards/${boardSearch}`,
+    {}
+  );
+  console.log(result);
+  return result;
 }

@@ -3,7 +3,9 @@ import { fetchQuote, fetchBoards } from "../services/gravebookServices";
 import Quote from "../models/quote";
 import "../css/landingPage.css";
 import Board from "../models/GraveBook";
-export interface ILandingPageProps {}
+export interface ILandingPageProps {
+  boardLists: Board[];
+}
 
 export function LandingPage(props: ILandingPageProps) {
   const [quote, setQuote] = useState<Quote[]>();
@@ -20,6 +22,10 @@ export function LandingPage(props: ILandingPageProps) {
   useEffect(() => {
     fetchBoards().then((x) => setBoards(x));
   }, []);
+
+  useEffect(() => {
+    setBoards(props.boardLists);
+  }, [props.boardLists]);
 
   let displayQuote = quote?.map((x) => x.quote);
 
