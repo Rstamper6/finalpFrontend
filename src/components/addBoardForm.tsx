@@ -108,9 +108,7 @@ export function BoardForm(props: IBoardFormProps) {
                   type="text"
                 />
               </div>
-              <div>
-                <Input id="img_input" type="hidden" value={img} />
-              </div>
+              <div></div>
               {/* <Button> */}
               {/* </Button> */}
             </form>
