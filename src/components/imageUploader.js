@@ -63,7 +63,7 @@ export default function ImageUploader({ onImgChange, setDisableSubmit }) {
     setUploadData(data);
 
     onImgChange(data.secure_url);
-    // getElementById("img_input").setValue(data.secure_url);
+
     setDisableSubmit(false);
 
     console.log("data", data);
