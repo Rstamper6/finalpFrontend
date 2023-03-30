@@ -18,6 +18,7 @@ export function BoardPostsRoute () {
     const [boardPosts, setBoardPosts] = useState([])
     const { boards} = useContext(BoardContext)
     const [boardId, setId] = useState('')
+    const [click, setClick] = useState(false)
 
     //grabs the id from the parameters in the URL
     let { id } = useParams();
@@ -36,29 +37,33 @@ export function BoardPostsRoute () {
         }
       }, [])
 
-    useEffect(() =>{
-      fetchBoardPosts(id).then(setBoardPosts)
-    }, [boardPosts])
+      useEffect(() =>{
+        fetchBoardPosts(id).then(setBoardPosts)
+        setClick(false)
+      }, [click === true])
  
   return (
     <div className='boardPostsRoute'>
       {
         //displays the board and posts as long as they are not undefined
-        board && boardPosts !== undefined &&
+        board !== undefined &&
         <div className='route'>
             <div className='name-img-div'>
               <BoardPosts board={board} posts={boardPosts} />
             </div>
             {user ?
-              <PostForm boardId={id}/>
+              <PostForm boardId={id} onClick={setClick} click={click}/>
               :
               <h5>Sign in to Add a post</h5>
             }
-            <div className='posts-div'>
-              <Posts  posts={boardPosts}/>
-            </div>
         </div>
 
+      }
+      {
+        boardPosts !== undefined &&
+        <div className='posts-div'>
+          <Posts  posts={boardPosts}/>
+        </div>
       }
     </div>
   );

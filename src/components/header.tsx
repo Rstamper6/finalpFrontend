@@ -12,6 +12,7 @@ import { signInWithGoogle, signOut } from "../firebaseconfig";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import { SignIn } from "./SignIn";
+import { BoardsList } from "./BoardsList";
 
 interface IHeaderProps {
   UpdateBoards: Function;

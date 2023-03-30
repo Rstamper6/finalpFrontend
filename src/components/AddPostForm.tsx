@@ -2,13 +2,15 @@ import * as React from "react";
 import { Button, Input, Label } from "reactstrap";
 import Modal from "react-modal";
 import { text } from "stream/consumers";
-import { useState, useContext } from "react";
-import { addBoardPost } from "../services/gravebookServices";
+import { useState, useContext, useEffect } from 'react';
+import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
 import { useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ImageUploader from "./imageUploader";
 
 export interface IPostFormProps {
+  onClick: React.Dispatch<React.SetStateAction<boolean>>,
+  click: boolean,
   boardId: string | undefined;
 }
 
@@ -48,12 +50,15 @@ export function PostForm(props: IPostFormProps) {
   }
 
   function onSubmit(e: React.FormEvent<HTMLElement>) {
-    e.preventDefault();
-    addBoardPost(id, { boardId, from, text, file });
+    addBoardPost(id, { user, boardId, from, text, file });
+    console.log(user);
     closeModal();
     setFrom("");
     setText("");
+    props.onClick(true)
   }
+
+
   return (
     <div>
       <Button onClick={openModal}>Add post</Button>
@@ -90,11 +95,11 @@ export function PostForm(props: IPostFormProps) {
           setDisableSubmit={setDisableSubmit}
         />
         {disableSubmit ? (
-          <Button disabled type="submit" form="create_post_form">
+          <Button onClick={onSubmit} disabled type="submit" form="create_post_form">
             Add Post
           </Button>
         ) : (
-          <Button type="submit" form="create_post_form">
+          <Button onClick={onSubmit} type="submit" form="create_post_form">
             Add Post
           </Button>
         )}

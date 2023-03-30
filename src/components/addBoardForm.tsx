@@ -10,7 +10,7 @@ export interface IBoardFormProps {}
 
 export function BoardForm(props: IBoardFormProps) {
   const { user } = useContext(AuthContext);
-  const userId = user?.email;
+  const userId = user?.uid;
 
   const [newBoard, setNewBoard] = useState<Board>();
   const [name, setName] = useState("");
@@ -48,8 +48,9 @@ export function BoardForm(props: IBoardFormProps) {
   //calls the "addBoard" function from the service and passes in the information in the brackets
   function onSubmit(e: React.FormEvent<HTMLElement>) {
     e.preventDefault();
-
-    addBoard({ name, dob, dod, obituary, img }).then(setNewBoard);
+    console.log(user?.toJSON());
+    
+    addBoard({user, name, dob, dod, obituary, img }).then(setNewBoard);
     console.log(newBoard?._id);
     closeModal();
   }
