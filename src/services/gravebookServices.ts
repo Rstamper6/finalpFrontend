@@ -3,7 +3,7 @@ import axios from "axios";
 import Quotes from "../models/quote";
 import { BoardPost } from "../models/GraveBook";
 
-const baseUrl = "http://127.0.0.1:5001/finalproject-8c02e/us-central1/api";
+const baseUrl = "https://us-central1-finalproject-8c02e.cloudfunctions.net/api";
 const quoteUrl = "https://api.api-ninjas.com/v1/quotes";
 const quoteKey = "7hP4Kwh2LKxzcqQoOOtUrQ==Ha0S2CjhbCMLF1gs";
 let category = "hope";
