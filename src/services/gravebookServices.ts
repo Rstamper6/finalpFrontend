@@ -3,7 +3,7 @@ import axios from "axios";
 import Quotes from "../models/quote";
 import { BoardPost } from "../models/GraveBook";
 
-const baseUrl = "https://us-central1-finalproject-8c02e.cloudfunctions.net/api";
+const baseUrl = "http://127.0.0.1:5001/finalproject-8c02e/us-central1/api";
 const quoteUrl = "https://api.api-ninjas.com/v1/quotes";
 const quoteKey = "7hP4Kwh2LKxzcqQoOOtUrQ==Ha0S2CjhbCMLF1gs";
 let category = "hope";
@@ -56,4 +56,9 @@ export async function getBoardData(boardSearch: any) {
   );
   console.log(result);
   return result;
+}
+
+export function fetchUserData(id: string | undefined) {
+  //gets a single board based on the ID
+  return axios.get(`${baseUrl}/boards/user/${id}`).then((res) => res.data);
 }
