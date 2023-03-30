@@ -46,8 +46,8 @@ export function Header(props: IHeaderProps) {
 
               <Nav.Link href="/boards">Boards</Nav.Link>
 
-              <Nav.Link style={{ color: "black" }} className="welcome">
-                {user?.displayName}
+              <Nav.Link  className="welcome">
+              <Link style={{ color: "black", textDecoration: 'none' }} to={`/user/${user?.uid}`}>{user?.displayName}</Link>
               </Nav.Link>
             </Nav>
             <Form className="d-flex" onSubmit={onSubmit}>

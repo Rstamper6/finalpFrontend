@@ -57,3 +57,8 @@ export async function getBoardData(boardSearch: any) {
   console.log(result);
   return result;
 }
+
+export function fetchUserData(id: string | undefined) {
+  //gets a single board based on the ID
+  return axios.get(`${baseUrl}/boards/user/${id}`).then((res) => res.data);
+}

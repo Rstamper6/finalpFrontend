@@ -11,6 +11,8 @@ import BoardContextProvider from "./context/BoardContectProvider";
 import AuthContextProvider from "./context/AuthContextProvider";
 import { FormEvent, useState } from "react";
 import Board from "./models/GraveBook";
+import { UserInfo } from './components/UserInfo';
+import { UserDataRoute } from './routes/UserDataRoute';
 
 function App() {
   const [boardLists, setBoardLists] = useState<Board[]>([]);
@@ -38,6 +40,7 @@ function App() {
               />
               <Route path="/boards" element={<BoardsRoute />} />
               <Route path="/boards/:id" element={<BoardPostsRoute />} />
+              <Route path="/user/:id" element={<UserDataRoute />} />
             </Routes>
           </div>
           {/* <UploadWidget /> */}
