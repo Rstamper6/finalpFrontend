@@ -32,7 +32,9 @@ export function LandingPage(props: ILandingPageProps) {
   //maps all of the boards to display the data
   let cards = boards?.map((board) => (
     <div className="board-card">
-      <img className="cardImg" src={board.img}></img>
+      <div className="imgDiv">      
+        <img className="cardImg" src={board.img}></img>
+      </div>
       <h3 className="cardName">{board.name}</h3>
       <div className="birth-death-div">
         <h5 className="cardDobDod">{`${board.dob} -`}</h5>
