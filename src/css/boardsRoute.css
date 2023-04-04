@@ -1,0 +1,7 @@
+.boardList-div{
+    display: flex;
+    justify-content: center;
+}
+.boardForm-div{
+    margin-top: 20px;
+}

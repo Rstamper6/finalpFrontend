@@ -1,4 +1,60 @@
+.header{
+  background-color: #D8DAD3;
+}
+
 .login-signup-buttons {
   display: flex;
   align-items: center;
+}
+
+.user-displayName {
+  color: black;
+  text-shadow: 2px 2px 10px #747474;
+
+}
+.user-displayName:hover {
+  color: #479f76;
+}
+.home {
+  color: gray;
+  text-decoration: none;
+  text-shadow: 2px 2px 10px #747474;
+
+}
+.home:hover {
+  color: #479f76;
+}
+.boards {
+  color: gray;
+  text-decoration: none;
+  text-shadow: 2px 2px 10px #747474;
+
+
+}
+.boards:hover {
+  color: #479f76;
+}
+
+.Gravebook h3{
+  margin-right: 10px;
+  translate: 0 4px;  
+  color: #479f76;
+  text-shadow: 2px 2px 5px #747474;
+
+}
+
+
+@media screen and (max-width: 768px) {
+  
+  .Gravebook{
+    display: none;
+  }
+
+}
+@media screen and (max-width: 991px) {
+  
+  .Gravebook{
+    display: none;
+  }
+
 }

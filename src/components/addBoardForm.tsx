@@ -22,11 +22,15 @@ export function BoardForm(props: IBoardFormProps) {
 
   //from here to line 40 is all pre written code from react-modal
   const customStyles = {
+    overlay: {
+      backgroundColor: 'rgba(52, 52, 52, 0.5)',
+    },
     content: {
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
+      width: "50%",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
     },
@@ -38,7 +42,8 @@ export function BoardForm(props: IBoardFormProps) {
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    subtitle.style.color = "#A4C2A5"
+    
   }
   function closeModal() {
     setIsOpen(false);
@@ -61,16 +66,17 @@ export function BoardForm(props: IBoardFormProps) {
       {user ? (
         <div>
           {/* more prewritten modal stuff to line 62 */}
-          <Button onClick={openModal}>Create Board</Button>
+          <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} onClick={openModal}>Create Board</Button>
           <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
-            style={customStyles}
+            // style={customStyles}
             onRequestClose={closeModal}
             contentLabel="Example Modal"
+            style={customStyles}
           >
             <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Create Board</h2>
-            <Button onClick={closeModal}>close</Button>
+            <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} onClick={closeModal}>close</Button>
             <form id="create_board_form" onSubmit={onSubmit}>
               <div>
                 <Label>Name</Label>
@@ -118,11 +124,11 @@ export function BoardForm(props: IBoardFormProps) {
               setDisableSubmit={setDisableSubmit}
             />
             {disableSubmit ? (
-              <Button disabled type="submit" form="create_board_form">
+              <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} disabled type="submit" form="create_board_form">
                 Submit Board
               </Button>
             ) : (
-              <Button type="submit" form="create_board_form">
+              <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} type="submit" form="create_board_form">
                 Submit Board
               </Button>
             )}

@@ -32,7 +32,9 @@ function App() {
       <BoardContextProvider>
         <BrowserRouter>
           <div className="App" onSubmit={(e) => onSubmit(e)}>
-            <Header UpdateBoards={UpdateBoards} />
+            <div className="header">
+              <Header UpdateBoards={UpdateBoards} />
+            </div>
             <Routes>
               <Route
                 path="/"
