@@ -1,13 +1,20 @@
 .user-data {
   margin: 20px;
-  padding: 20px;
-  display: flex;
+  padding: 10px;
+  display: inline-block;
   justify-content: center;
   flex-wrap: wrap;
 }
 .user-posts-info {
   border: solid 1px black;
-  margin: 10px;
+  margin: 20px;
+  padding: 20px;
+  width: 25%;
+}
+
+.user-boards-info {
+  border: solid 1px black;
+  margin: 20px;
   padding: 20px;
   width: 25%;
 }

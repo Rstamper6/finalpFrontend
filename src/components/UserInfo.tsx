@@ -50,6 +50,8 @@ export function UserInfo(props: IUserInfoProps) {
       ))}
       <br></br>
       <br></br>
+      <br></br>
+      <br></br>
       <h2>Boards</h2>
       {props.userBoard.length === 0 && <h5>No Boards</h5>}
       {props.userBoard.map((board) => (
@@ -57,13 +59,15 @@ export function UserInfo(props: IUserInfoProps) {
           {props.userBoard.map((board) => (
             <div className="user-board-info">
               <p className="board-text">Text: {board.name}</p>
+              <img className="cardImg" src={board.img}></img>
               <p className="board-obituary">Obituary: {board.obituary}</p>
               <button
                 className="delete-button"
                 onClick={(e: any) => deleteBoard(board._id || "")}
               >
-                Delete Post
+                Delete Board
               </button>
+              <Link to={`/boards/${board._id}`}>View</Link>
             </div>
           ))}
         </section>
