@@ -49,9 +49,7 @@ export function deleteBoardPost(id: string | undefined) {
 
 export function deleteBoard(id: string | undefined) {
   //deletes a board
-  return axios
-    .delete<Board>(`${baseUrl}/boards/boardposts/${id}`)
-    .then((res) => res.data);
+  return axios.delete<Board>(`${baseUrl}/boards/${id}`).then((res) => res.data);
 }
 
 export function fetchQuote(): Promise<Quotes[]> {

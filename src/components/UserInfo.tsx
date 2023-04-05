@@ -4,7 +4,7 @@ import Board, { BoardPost } from "../models/GraveBook";
 // import { deleteBoardPost, fetchBoard } from "../services/gravebookServices";
 import "../css/UserData.css";
 import { useState } from "react";
-import { deleteBoardPost } from "../services/gravebookServices";
+import { deleteBoard, deleteBoardPost } from "../services/gravebookServices";
 
 export interface IUserInfoProps {
   userData: BoardPost[];
@@ -19,7 +19,7 @@ export function UserInfo(props: IUserInfoProps) {
     // setIsOpen(true);
   }
 
-  async function deleteBoard(id: string) {
+  async function deleteBoardy(id: string) {
     await deleteBoard(id);
   }
   // const deletePost = (id: string) => {
@@ -63,10 +63,11 @@ export function UserInfo(props: IUserInfoProps) {
               <p className="board-obituary">Obituary: {board.obituary}</p>
               <button
                 className="delete-button"
-                onClick={(e: any) => deleteBoard(board._id || "")}
+                onClick={(e: any) => deleteBoardy(board._id || "")}
               >
                 Delete Board
               </button>
+
               <Link to={`/boards/${board._id}`}>View</Link>
             </div>
           ))}
