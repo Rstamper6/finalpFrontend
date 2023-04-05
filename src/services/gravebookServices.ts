@@ -4,6 +4,7 @@ import Quotes from "../models/quote";
 import { BoardPost } from "../models/GraveBook";
 
 const baseUrl = "https://us-central1-finalproject-8c02e.cloudfunctions.net/api";
+// const baseUrl = "https://us-central1-final-28e18.cloudfunctions.net/api";
 const quoteUrl = "https://api.api-ninjas.com/v1/quotes";
 const quoteKey = "7hP4Kwh2LKxzcqQoOOtUrQ==Ha0S2CjhbCMLF1gs";
 let category = "hope";
@@ -39,6 +40,20 @@ export function addBoardPost(
     .then((res) => res.data);
 }
 
+export function deleteBoardPost(id: string | undefined) {
+  //deletes a post
+  return axios
+    .delete<BoardPost>(`${baseUrl}/boards/boardposts/${id}`)
+    .then((res) => res.data);
+}
+
+export function deleteBoard(id: string | undefined) {
+  //deletes a board
+  return axios
+    .delete<Board>(`${baseUrl}/boards/boardposts/${id}`)
+    .then((res) => res.data);
+}
+
 export function fetchQuote(): Promise<Quotes[]> {
   //gets a quote from the quote API to display on the home page
   const config = {
@@ -50,6 +65,7 @@ export function fetchQuote(): Promise<Quotes[]> {
 }
 
 export async function getBoardData(boardSearch: any) {
+  //gets a list of boards based on search input name
   let result = axios.get<Board[]>(
     `${baseUrl}/boards/boards/${boardSearch}`,
     {}
@@ -60,5 +76,14 @@ export async function getBoardData(boardSearch: any) {
 
 export function fetchUserData(id: string | undefined) {
   //gets a single board based on the ID
-  return axios.get(`${baseUrl}/boards/user/${id}`).then((res) => res.data);
+  return axios
+    .get(`${baseUrl}/boards/boardposts/byuser/${id}`)
+    .then((res) => res.data);
+}
+
+export function fetchUserBoard(id: string | undefined) {
+  //gets a single board based on the ID
+  return axios
+    .get(`${baseUrl}/boards/boards/byuser/${id}`)
+    .then((res) => res.data);
 }
