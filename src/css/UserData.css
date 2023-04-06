@@ -3,19 +3,54 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    /* border: solid 1px black; */
+
     
 }
+
+
+.user-posts-div{
+  width: 50%;
+  /* border: solid 1px black; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .user-posts-info{
-    border: solid 1px black;
+    /* border: solid 1px black; */
     margin: 10px;
-    width: 25%;
+    width: 80%;
+    padding: 10px;
     background-color: #D8DAD3;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.user-boards-div{
+  width: 50%;
+  /* border: solid 1px black; */
+  display: flex;
+  align-items: center;
+
+}
+.user-board-info{
+  /* border: solid 1px black; */
+  margin: 10px;
+  width: 80%;
+  padding: 10px;
+
+  background-color: #D8DAD3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 @media screen and (max-width: 830px) {
-    .user-posts-info{
-        width: 100%;
-    }
+  .user-posts-info {
+    width: 100%;
+  }
+  .user-posts-info {
+    width: 100%;
+  }
 }
+
+

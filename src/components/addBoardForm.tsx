@@ -81,7 +81,7 @@ export function BoardForm(props: IBoardFormProps) {
             contentLabel="Example Modal"
             // style={customStyles}
           >
-            <div className="h2-button-div">
+            <div className="h2-button-div"> ``
               <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Create Board</h2>
               <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} onClick={closeModal}>close</Button>
             </div>
