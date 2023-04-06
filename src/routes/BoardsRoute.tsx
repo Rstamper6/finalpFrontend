@@ -3,6 +3,7 @@ import { BoardsList } from "../components/BoardsList";
 import { BoardForm } from "../components/addBoardForm";
 import BoardContext from "../context/BoardContext";
 import '../css/boardsRoute.css'
+import { Button } from "react-bootstrap";
 
 export default function BoardsRoute() {
   const { getBoards, boards } = useContext(BoardContext);
@@ -14,7 +15,7 @@ export default function BoardsRoute() {
     <div className="BoardsRoute">
       {/* displays the board form */}
       <div className="boardForm-div">
-        <BoardForm />
+      <BoardForm />
       </div>
       {/* displays the all of the boards and passes the data to the boardsList component through props */}
       <div className="boardList-div">

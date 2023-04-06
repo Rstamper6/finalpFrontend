@@ -1,7 +1,7 @@
 import Board from "../models/GraveBook";
 import { Link } from "react-router-dom";
 import { BoardPostsRoute } from "../routes/BoardPostsRoute";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "../css/boardlist.css";
 import { ReactNode, useState, useEffect } from 'react';
 import _ from "lodash";
@@ -48,7 +48,9 @@ export function BoardsList(props: IBoardsProps) {
                 <h3>{board.name}</h3>
                 <p>{board.dob} - {board.dod}</p>
                 <div className="Link-div">
-                  <Link className="view-board" to={`/boards/${board._id}`}>View Board</Link>
+                <Link className="view-board" to={`/boards/${board._id}`}>
+                  <Button variant="outline-success" className="viewButton"> View Board</Button>
+                </Link>
                 </div>
               </div>
               <div className="created-by">

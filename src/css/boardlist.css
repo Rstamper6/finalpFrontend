@@ -14,7 +14,10 @@
 
 }
 .board-info{
-  min-width: 50%;
+  width: 50%;
+}
+.board-image {
+  width: 25%;
 }
 
 .img {
@@ -42,7 +45,7 @@
 
 .created-by{
   margin: 0;
-  width: 15%;
+  width: 25%;
 }
 .theCard {
   margin-top: 20px;
@@ -50,8 +53,21 @@
 
 }
 
+.pagination{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-
+@media screen and (max-width: 768px) {
+  .BoardsList {
+    width: 95%;
+  }
+  .img {
+    display: none;
+  }
+ 
+}
 
 
 

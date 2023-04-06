@@ -5,6 +5,7 @@ import "../css/landingPage.css";
 import Board from "../models/GraveBook";
 import { Button } from 'react-bootstrap';
 import _ from "lodash";
+import { Link } from 'react-router-dom';
 
 export interface ILandingPageProps {
   boardLists: Board[];
@@ -56,6 +57,10 @@ export function LandingPage(props: ILandingPageProps) {
     setPaginatedPost(paginatedPost)
   }
 
+  function sendToBoard(id : any){
+    return <Link className="view-board" to={`/boards/${id}`}>View Board</Link>
+  }
+
   //maps all of the boards to display the data
   let cards = paginatedPost.map((board) => (
     <div className="board-card">
@@ -65,12 +70,12 @@ export function LandingPage(props: ILandingPageProps) {
       <div className="board-info">
         <h3 className="cardName">{board.name}</h3>
         <div className="birth-death-div">
-          <h5 className="cardDobDod">{`${board.dob} -`}</h5>
-          <h5 className="cardDobDod">{`${board.dod}`}</h5>
+          <h5 className="cardDobDod">{`${board.dob} - ${board.dod}`}</h5>
         </div>
       </div>
-
-      <Button variant="outline-success" className="viewButton">View Board</Button>
+      <Link className="view-board" to={`/boards/${board._id}`}>
+        <Button variant="outline-success" className="viewButton"> View Board</Button>
+      </Link>
     </div>
   ));
 
@@ -82,20 +87,28 @@ export function LandingPage(props: ILandingPageProps) {
         <h2 className="quote"><strong>{quote !== undefined && displayQuote}</strong></h2>
       </div>
       {/* displays the boards as long as they are defined */}
-      <div className="boardsDiv">{boards !== undefined && cards}</div>
-      <nav className="paginationContainer">
-        <ul className="pagination">
-          {pages.map((page) => (
-            <li className={
-              page === currentPage? "page-item active"  : "page-item"
-            }
-            >
-              <p className="page-link"
-              onClick={() =>pagination(page) }>{page}</p>
-              </li>
-          ))}
-        </ul>
-      </nav>
+      <div className="boards-pagination">
+        <div className="boardsDiv">
+          {boards !== undefined && cards}
+        </div>
+
+        <div className="paginations">
+          <nav className="paginationContainer">
+            <ul className="pagination">
+              {pages.map((page) => (
+                <li className={
+                  page === currentPage? "page-item active"  : "page-item"
+                }
+                >
+                  <p className="page-link"
+                  onClick={() =>pagination(page) }>{page}</p>
+                  </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
     </div>
     
   );

@@ -42,7 +42,7 @@ export function BoardPostsRoute () {
       useEffect(() =>{
         fetchBoardPosts(id).then(setBoardPosts)
         setClick(false)
-        setPaginatedPost(_(boardPosts).slice(0).take(pageSize).value())
+        // setPaginatedPost(_(boardPosts).slice(0).take(pageSize).value())
 
       }, [click === true])
 
@@ -57,7 +57,7 @@ export function BoardPostsRoute () {
         setPaginatedPost(_(boardPosts).slice(0).take(pageSize).value())
       }, [pageCount]);
     
-      if (pageCount === 1) return null;
+      // if (pageCount === 1) return null;
       const pages = _.range(1, pageCount + 1);
     
       const pagination = (pageNo:number) => {
@@ -87,7 +87,8 @@ export function BoardPostsRoute () {
       {
         boardPosts !== undefined &&
         <div className='posts-div'>
-          <Posts  posts={boardPosts} paginatedPost={paginatedPost} pages={pages} pagination={pagination} currentPage={currentPage}/>
+          <Posts  posts={boardPosts} paginatedPost={paginatedPost} pages={pages} pagination={pagination} currentPage={currentPage} />
+          {/*  */}
         </div>
       }
             <nav className="paginationContainer">

@@ -7,6 +7,7 @@ import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
 import { useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ImageUploader from "./imageUploader";
+import '../css/addPostForm.css'
 
 export interface IPostFormProps {
   onClick: React.Dispatch<React.SetStateAction<boolean>>,
@@ -67,10 +68,12 @@ export function PostForm(props: IPostFormProps) {
     <div>
       <Button style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} onClick={openModal}>Add post</Button>
       <Modal
+        className="Modal"
+        overlayClassName="Overlay"
         ariaHideApp={false}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        style={customStyles}
+        // style={customStyles}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >

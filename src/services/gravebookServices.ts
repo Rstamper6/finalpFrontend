@@ -6,7 +6,7 @@ import { BoardPost } from "../models/GraveBook";
 const baseUrl = "https://us-central1-finalproject-8c02e.cloudfunctions.net/api";
 const quoteUrl = "https://api.api-ninjas.com/v1/quotes";
 const quoteKey = "7hP4Kwh2LKxzcqQoOOtUrQ==Ha0S2CjhbCMLF1gs";
-let category = "hope";
+let category = "car";
 let limit = 1;
 
 export function fetchBoards(): Promise<Board[]> {
@@ -60,5 +60,5 @@ export async function getBoardData(boardSearch: any) {
 
 export function fetchUserData(id: string | undefined) {
   //gets a single board based on the ID
-  return axios.get(`${baseUrl}/boards/user/${id}`).then((res) => res.data);
+  return axios.get(`${baseUrl}/boards/boardposts/byuser/${id}`).then((res) => res.data);
 }

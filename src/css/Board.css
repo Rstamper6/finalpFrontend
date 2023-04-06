@@ -73,113 +73,34 @@
   margin-left: 20px;
   margin-top: 40px;
 }
-/* @media screen and (max-width: 480px) {
-  
-  .Board-Info{
-    display: block;
-    margin: auto;
+
+
+@media screen and (max-width: 768px ) {
+  .boardPosts {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding: 0;
+  }    
+  .Board-Image {
     height: auto;
-    width: 80%;
+    width: 90%;
+    object-fit:scale-down;
+    margin-bottom: 20px;
   }
 
-
-} */
-/* 
-@media screen and (max-width: 1000em) {
-
-  .Board-Button{
-    height:100%;
-    width: auto;
-    margin: auto;
-    display: flex;
-    justify-content: center;
+  .Board-Info {
+    width: 90%;
   }
-  .Title {
-    text-align: left;
-    margin: auto;
-    
+  .board-name {
+    margin-left: 0;
   }
-  .Board-Info{
-    display: block;
-    margin: 0;
-    height: 100%;
-    width: 60%;
-    
+  .board-bob-dod {
+    margin-left: 0;
   }
-
-
-} */
-
-
-/* @media screen and (max-width: 480px) {
-  .ServicesCards {
-     color: blue;
+  .Board-Paragraph {
+    margin-left: 0;
+    margin-top: 10px;
   }
- 
-}
-@media screen and (min-width: 768px) {
-  
-  .Board-Info{
-    display: flex;
-    margin: auto;
-    height: auto;
-  }
-
 
 }
-@media screen and (max-width: 500px) {
-  
-  .Board-Info{
-    display: block;
-    margin: auto;
-    height: auto;
-  }
-
-
-}
-@media screen and (min-width: 768px) {
-  
-  .Board-Info{
-    display: flex;
-    margin: auto;
-    height: auto;
-  }
-
-
-} */
-/* 
-@media screen and (max-width: 768px) {
-  .Board-List-Div {
-      width: 80%;
-      margin: auto;
-  }
-  .Board-Div{
-      width: 80%;
-      margin: auto;
-
-  }
-  .Board-Info{
-      height: 100%;
-      flex-direction: row;
-  }
-  .Board-Image{
-      height: auto;
-  }
- 
-}
-@media screen and (max-width: 1024px) {
-  .Board-List-Div {
-      width: 80%;
-      margin: auto;
-  }
- 
-}
-
-@media screen and (max-width: 1200px) {
-  .Board-List-Div {
-      width: 80%;
-      margin: auto;
-     display: none;
-  }
- 
-} */
