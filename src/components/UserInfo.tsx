@@ -1,9 +1,7 @@
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Board, { BoardPost } from "../models/GraveBook";
 // import { deleteBoardPost, fetchBoard } from "../services/gravebookServices";
 import "../css/UserData.css";
-import { useState } from "react";
 import { deleteBoard, deleteBoardPost } from "../services/gravebookServices";
 
 export interface IUserInfoProps {
@@ -32,6 +30,7 @@ export function UserInfo(props: IUserInfoProps) {
 
   return (
     <div className="user-data">
+      <div className="user-posts-div">
       <h2>Posts</h2>
       {/* {boards !== undefined && cards} */}
       {props.userData.length === 0 && <h5>No Posts</h5>}
@@ -48,30 +47,34 @@ export function UserInfo(props: IUserInfoProps) {
           <Link to={`/boards/${boardpost.boardId}`}>View</Link>
         </div>
       ))}
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      </div>
+      <div className="user-boards-div">
       <h2>Boards</h2>
       {props.userBoard.length === 0 && <h5>No Boards</h5>}
 
-      <section>
         {props.userBoard.map((board) => (
           <div className="user-board-info">
-            <p className="board-text">Text: {board.name}</p>
-            <img className="cardImg" src={board.img}></img>
-            <p className="board-obituary">Obituary: {board.obituary}</p>
-            <button
-              className="delete-button"
-              onClick={(e: any) => deleteBoardy(board._id || "")}
-            >
-              Delete Board
-            </button>
+            <div>
+              <img className="cardImg" src={board.img}></img>
+              <p className="board-text">Name: {board.name}</p>
+            </div> 
+            <div>
+              <p className="board-obituary">Obituary: {board.obituary}</p>
+            </div>
+            <div>
+              <button
+                className="delete-button"
+                onClick={(e: any) => deleteBoardy(board._id || "")}
+              >
+                Delete Board
+              </button>
 
-            <Link to={`/boards/${board._id}`}>View</Link>
+              <Link to={`/boards/${board._id}`}>View</Link>
+            </div>
           </div>
         ))}
-      </section>
+      </div>
+      
     </div>
   );
 }

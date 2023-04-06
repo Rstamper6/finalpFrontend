@@ -3,6 +3,7 @@ import "../css/imageUploader.css";
 // import Head from "next/head";
 // import styles from "../styles/Home.module.scss";
 
+
 export default function ImageUploader({ onImgChange, setDisableSubmit }) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();

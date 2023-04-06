@@ -7,7 +7,7 @@ const baseUrl = "https://us-central1-finalproject-8c02e.cloudfunctions.net/api";
 // const baseUrl = "https://us-central1-final-28e18.cloudfunctions.net/api";
 const quoteUrl = "https://api.api-ninjas.com/v1/quotes";
 const quoteKey = "7hP4Kwh2LKxzcqQoOOtUrQ==Ha0S2CjhbCMLF1gs";
-let category = "hope";
+let category = "car";
 let limit = 1;
 
 export function fetchBoards(): Promise<Board[]> {

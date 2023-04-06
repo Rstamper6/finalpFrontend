@@ -2,7 +2,6 @@ import { ReactNode, useState } from "react";
 import Board from "../models/GraveBook";
 import { fetchBoards, fetchBoard } from "../services/gravebookServices";
 import BoardContext from "./BoardContext";
-import { BoardPost } from "../models/GraveBook";
 
 export interface IBoardContextProviderProps {
   children: ReactNode;

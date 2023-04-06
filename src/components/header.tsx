@@ -7,12 +7,9 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { signInWithGoogle, signOut } from "../firebaseconfig";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import { SignIn } from "./SignIn";
-import { BoardsList } from "./BoardsList";
 
 interface IHeaderProps {
   UpdateBoards: Function;
@@ -32,9 +29,12 @@ export function Header(props: IHeaderProps) {
   };
 
   return (
-    <div className="header">
-      <Navbar bg="light" expand="lg">
-        <Container fluid>
+    <div  className="header">
+      <Navbar expand="lg">
+        <Container  fluid id="container">
+        <div className="Gravebook">
+            <h3 >Gravebook</h3>
+          </div>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -42,14 +42,15 @@ export function Header(props: IHeaderProps) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link><Link className="home" to={'/'}>Home</Link></Nav.Link>
 
-              <Nav.Link href="/boards">Boards</Nav.Link>
+              <Nav.Link><Link className="boards" to={'/boards'}>Boards</Link></Nav.Link>
 
               <Nav.Link  className="welcome">
-              <Link style={{ color: "black", textDecoration: 'none' }} to={`/user/${user?.uid}`}>{user?.displayName}</Link>
+              <Link className="user-displayName" style={{   textDecoration: 'none'  }} to={`/user/${user?.uid}`}>{user?.displayName}</Link>
               </Nav.Link>
             </Nav>
+
             <Form className="d-flex" onSubmit={onSubmit}>
               <Form.Control
                 type="text"

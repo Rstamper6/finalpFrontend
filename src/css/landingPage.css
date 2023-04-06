@@ -1,8 +1,9 @@
 .headImg {
-  height: 25em;
-  width: 100%;
+  height: 40em;
+  max-width: 100%;
+  min-width: 100%;
   opacity: 60%;
-  padding : 1em
+  
 }
 
 .headerImg-quote {
@@ -15,6 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-shadow: 2px 2px 20px #a1a1a1;
+
 }
 
 
@@ -26,8 +29,17 @@
   flex-direction: row;
   height: 150px;
   margin: 1em;
-  color: #B38AAE;
-  
+  color: black;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #D8DAD3;
+}
+
+.board-info {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
 }
 .landingPage{
   height: 100em;
@@ -39,26 +51,41 @@
   justify-content: center;
   flex-wrap: wrap;
   
+  
 }
 .viewButton{
   background-color: #2F4858;
   color: white;
   font-weight: bolder;
+  border: none;
 }
 
 .cardImg{
   max-height: 100%;
-  max-width: 200px;
+  max-width: 150px;
+  min-height: 100%;
+  min-width: 150px;
+  object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
+.paginations {
+  display: flex;
+  justify-content: center;
+}
+.page-link{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+@media screen and (max-width: 1024px) {
   
 
   .board-card{
     width: 80%;
-    flex-direction: column;
-
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .cardName {
+    width: 100%;
   }
   .cardImg{
     display: none;
@@ -68,12 +95,14 @@
     height: 25%;
   }
   .headerImg-quote .quote{
+    display: none;
+  }
+  .birth-death-div{
+    width: 100%;
+  }
+  .cardDobDod{
     font-size: small;
   }
 
 
 }
-/* 
-.cardName, .birth-death-div{
-
-} */
