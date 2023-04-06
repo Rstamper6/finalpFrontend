@@ -1,9 +1,8 @@
 import Board from "../models/GraveBook";
 import { Link } from "react-router-dom";
-import { BoardPostsRoute } from "../routes/BoardPostsRoute";
 import { Card, Button } from "react-bootstrap";
 import "../css/boardlist.css";
-import { ReactNode, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import _ from "lodash";
 
 

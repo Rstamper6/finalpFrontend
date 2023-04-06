@@ -1,11 +1,7 @@
-import { Button, Label, Input } from "reactstrap";
 import Board from "../models/GraveBook";
 import { BoardPost } from "../models/GraveBook";
 import { useState, useEffect } from "react";
-import Modal from "react-modal";
-import { addBoardPost, fetchBoardPosts } from "../services/gravebookServices";
 import "../css/Board.css";
-import Form from "react-bootstrap/Form";
 
 export interface IBoardPostsProps {
   board: Board;

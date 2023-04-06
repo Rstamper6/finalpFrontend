@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Board from '../models/GraveBook';
 import { useState, useEffect, useContext } from 'react';
 import { fetchBoard, fetchBoardPosts } from '../services/gravebookServices';

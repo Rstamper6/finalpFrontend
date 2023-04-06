@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../css/imageUploader.css";
 // import Head from "next/head";
 // import styles from "../styles/Home.module.scss";
-import { Button } from "react-bootstrap";
 
 
 export default function ImageUploader({ onImgChange, setDisableSubmit }) {
@@ -93,7 +92,7 @@ export default function ImageUploader({ onImgChange, setDisableSubmit }) {
 
           {imageSrc && !uploadData && (
             <p>
-              <Button>Upload Files</Button>
+              <button>Upload Files</button>
             </p>
           )}
           {uploadData && (

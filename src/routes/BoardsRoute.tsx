@@ -3,7 +3,6 @@ import { BoardsList } from "../components/BoardsList";
 import { BoardForm } from "../components/addBoardForm";
 import BoardContext from "../context/BoardContext";
 import '../css/boardsRoute.css'
-import { Button } from "react-bootstrap";
 
 export default function BoardsRoute() {
   const { getBoards, boards } = useContext(BoardContext);

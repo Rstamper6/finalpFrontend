@@ -1,7 +1,6 @@
 import { BoardPost } from "../models/GraveBook";
 import "../css/posts.css";
 import _ from "lodash";
-import { useState, useEffect } from 'react';
 
 
 export interface IPostsProps {

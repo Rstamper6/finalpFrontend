@@ -7,13 +7,9 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { signInWithGoogle, signOut } from "../firebaseconfig";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import { SignIn } from "./SignIn";
-import { BoardsList } from "./BoardsList";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 interface IHeaderProps {
   UpdateBoards: Function;

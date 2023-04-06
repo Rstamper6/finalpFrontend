@@ -1,9 +1,7 @@
-import * as React from "react";
 import { Button, Input, Label } from "reactstrap";
 import Modal from "react-modal";
-import { text } from "stream/consumers";
-import { useState, useContext, useEffect } from 'react';
-import { addBoardPost, fetchBoardPosts } from '../services/gravebookServices';
+import { useState, useContext} from 'react';
+import { addBoardPost} from '../services/gravebookServices';
 import { useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ImageUploader from "./imageUploader";

@@ -1,6 +1,5 @@
 import { Label, Input } from "reactstrap";
 import { Button } from "react-bootstrap";
-
 import Board from "../models/GraveBook";
 import { addBoard } from "../services/gravebookServices";
 import Modal from "react-modal";

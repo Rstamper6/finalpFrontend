@@ -11,13 +11,14 @@
 
 .user-posts-div{
   width: 50%;
-  /* border: solid 1px black; */
+  border: solid 1px black;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
 }
 .user-posts-info{
-    /* border: solid 1px black; */
+    border: solid 1px black;
     margin: 10px;
     width: 80%;
     padding: 10px;
@@ -28,17 +29,20 @@
 
 .user-boards-div{
   width: 50%;
-  /* border: solid 1px black; */
+  border: solid 1px black;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 
 }
 .user-board-info{
-  /* border: solid 1px black; */
+  border: solid 1px black;
   margin: 10px;
   width: 80%;
+  max-height: fit-content;
   padding: 10px;
-
+  display: flex;
   background-color: #D8DAD3;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
